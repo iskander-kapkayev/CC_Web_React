@@ -9,10 +9,7 @@ function App() {
   return (
     <div>
       <h1>From App</h1>
-      <NavigationBar />
-      <Image />
-      <Post />
-      <CaptionForm />
+      <NavigationBar></NavigationBar>
     </div>
   );
 }
