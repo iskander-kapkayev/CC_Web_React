@@ -10,6 +10,7 @@ function App() {
     <div>
       <h1>From App</h1>
       <NavigationBar></NavigationBar>
+      <Image></Image>
     </div>
   );
 }
