@@ -8,6 +8,7 @@ import CaptionForm from './CaptionForm.js';
 function App() {
   return (
     <div>
+      <h1>From App</h1>
       <NavigationBar />
       <Image />
       <Post />
