@@ -1,6 +1,6 @@
 import '../styles/App.css';
 import React from 'react';
-import NavigationBar from './NavigationBar.js';
+import NavigationBar from './NavigationBar.jsx';
 import Image from './Image.js';
 import Post from './Post.js';
 import CaptionForm from './CaptionForm.js';
