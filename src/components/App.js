@@ -1,4 +1,5 @@
 import '../styles/App.css';
+import React from 'react';
 import NavigationBar from './NavigationBar.js';
 import Image from './Image.js';
 import Post from './Post.js';

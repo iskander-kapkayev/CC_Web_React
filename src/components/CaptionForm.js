@@ -1,5 +1,7 @@
 /* caption form for handling user inputs */
 
+import React from 'react';
+
 function CaptionForm() {
     return (
 

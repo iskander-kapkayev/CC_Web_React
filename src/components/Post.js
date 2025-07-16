@@ -1,7 +1,11 @@
 /* handles posts from users */
 
-function Post() {
+import React from 'react';
 
+function Post() {
+    return (
+        <div>From Post</div>
+    );
 }
 
 export default Post;

@@ -1,5 +1,6 @@
 /* this will house the navigation bar component */
 /* will adjust to handle different navigation on different pages */
+import React from 'react';
 
 function NavigationBar() {
     return (
