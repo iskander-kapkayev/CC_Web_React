@@ -12,7 +12,6 @@ function App() {
       <NavigationBar></NavigationBar>
       <Image></Image>
       <Post></Post>
-      <CaptionForm></CaptionForm>
     </div>
   );
 }
