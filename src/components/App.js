@@ -9,8 +9,10 @@ function App() {
   return (
     <div>
       <h1>From App</h1>
-      <NavigationBar></NavigationBar>
+      <NavigationBar />
       <Image></Image>
+      <Post></Post>
+      <CaptionForm></CaptionForm>
     </div>
   );
 }
