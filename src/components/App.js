@@ -1,10 +1,18 @@
 import '../styles/App.css';
+import { NavigationBar } from 'NavigationBar';
+import { Image } from 'Image';
+import { Post } from 'Post';
+import { CaptionForm } from 'CaptionForm';
 
-export function App() {
+function App() {
   return (
     <div>
-      <h1>Parcel React App</h1>
-      
+      <NavigationBar />
+      <Image />
+      <Post />
+      <CaptionForm />
     </div>
   );
 }
+
+export default App;
