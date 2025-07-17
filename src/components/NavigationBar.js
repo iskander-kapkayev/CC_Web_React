@@ -2,16 +2,16 @@
 /* will adjust to handle different navigation on different pages */
 import React from 'react';
 
-function NavigationBar() {
+function NavigationBar(props) {
     return (
         <div className="header-container">
             <h1>Iskander's Caption Contest!</h1>
             <nav>
                 <ul>
-                    <li id="loginChange"><a href="login.html">Login</a></li>
-                    <li><a href="#post-container">Captions</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li onClick={props.onClick('login')}>Login</li>
+                    <li onClick={props.onClick('home')}>Captions</li>
+                    <li onClick={props.onClick('about')}>About Me</li>
+                    <li onClick={props.onClick('leaderboard')}>Leaderboard</li>
                 </ul>
             </nav>
         </div>
