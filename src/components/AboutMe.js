@@ -11,9 +11,9 @@ function AboutMe() {
 
                 <p id="aboutmetext">
                     This is a free to use caption contest!<br/>
-                    Feel free to enjoy it and share the link with others.<br/><br/>
-                    In order to participate, you will need to register an account.<br/><br/>
-                    After you register, you can vote and leave your own caption.<br/><br/>
+                    Feel free to enjoy it and share the link with others.<br/>
+                    In order to participate, you will need to register an account.<br/>
+                    After you register, you can vote and leave your own caption.<br/>
                     <strong>Try to get the most likes for your caption!</strong><br/><br/>
                     
                     All images/gifs are borrowed and are not owned by me.
