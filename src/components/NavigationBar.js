@@ -8,10 +8,10 @@ function NavigationBar() {
             <h1>Iskander's Caption Contest!</h1>
             <nav>
                 <ul>
-                    <li id="loginChange"><a href="./pages/login.html">Login</a></li>
+                    <li id="loginChange"><a href="./src/pages/login.html">Login</a></li>
                     <li><a href="#post-container">Captions</a></li>
-                    <li><a href="./pages/about.html">About Me</a></li>
-                    <li><a href="./pages/leaderboard.html">Leaderboard</a></li>
+                    <li><a href="./src/pages/about.html">About Me</a></li>
+                    <li><a href="./src/pages/leaderboard.html">Leaderboard</a></li>
                 </ul>
             </nav>
         </div>
