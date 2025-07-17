@@ -8,10 +8,10 @@ function NavigationBar(props) {
             <h1>Iskander's Caption Contest!</h1>
             <nav>
                 <ul>
-                    <li onClick={props.onClick('login')}>Login</li>
-                    <li onClick={props.onClick('home')}>Captions</li>
-                    <li onClick={props.onClick('about')}>About Me</li>
-                    <li onClick={props.onClick('leaderboard')}>Leaderboard</li>
+                    <li onClick={() => props.onClick('login')}>Login</li>
+                    <li onClick={() => props.onClick('home')}>Captions</li>
+                    <li onClick={() => props.onClick('about')}>About Me</li>
+                    <li onClick={() => props.onClick('leaderboard')}>Leaderboard</li>
                 </ul>
             </nav>
         </div>
