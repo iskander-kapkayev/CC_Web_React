@@ -367,10 +367,6 @@ below starts styling for the sign up page
   margin: 0;
 }
 
-.form-container span {
-  margin-bottom: 20px;
-}
-
 .form-container form {
   position: relative;
   background: #FFFFFF;
