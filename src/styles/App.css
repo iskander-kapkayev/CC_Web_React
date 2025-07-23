@@ -360,6 +360,11 @@ below starts styling for the sign up page
   margin-bottom: 20px;
 }
 
+.form-container p {
+  text-align: left;
+  font-size: small;
+}
+
 .form-container form {
   position: relative;
   background: #FFFFFF;
