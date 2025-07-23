@@ -19,7 +19,7 @@ function UserFormControl() {
                     <button type="submit" value="Submit">SUBMIT</button>
                 </form>
 
-                <div class="link">
+                <div className="link">
                     <p>Don't have an account? <a onClick={() => setForm('register')}>REGISTER here</a></p>
                 </div>
             </div>
@@ -36,7 +36,7 @@ function UserFormControl() {
                     <button type="submit" value="Submit">SUBMIT</button>
                 </form>
 
-                <div class="link">
+                <div className="link">
                     <p>Already have an account? <a onClick={() => setForm('login')}>LOGIN here</a></p>
                 </div>
 
