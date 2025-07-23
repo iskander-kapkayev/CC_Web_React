@@ -457,6 +457,7 @@ below starts styling for the sign up page
 
 .link a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 
