@@ -5,28 +5,24 @@ function evaluateView(newView) {
     if (newView === 'home') {
         return (
             <div>
-                <NavigationBar onClick={handleOnClick}/>
                 <Login />
             </div>
         );
     } else if (newView === 'login') {
         return (
             <div>
-                <NavigationBar onClick={handleOnClick}/>
                 <AboutMe />
             </div>
         );
     } else if (newView === 'about') {
         return (
             <div>
-                <NavigationBar onClick={handleOnClick}/>
                 <AboutMe />
             </div>
         );
     } else if (newView === 'leader') {
         return (
             <div>
-                <NavigationBar onClick={handleOnClick}/>
                 <Leaderboard />
             </div>
         );
@@ -44,7 +40,12 @@ function MainContainer() {
 
     const newView = evaluateView(currentView);
 
-    return newView;
+    return (
+        <div>
+            <NavigationBar onClick={handleOnClick}/>
+            {newView}
+        </div>
+    );
     
 }
 
