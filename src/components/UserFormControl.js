@@ -26,13 +26,15 @@ function UserFormControl() {
         );
     } else {
         return (
-            <div class="form-container">
+            <div className="form-container">
                 <h2>REGISTER</h2>
 
-                <p>Please note:</p>
-                <p>There is no email verification at this time.</p>
-                <p>So, you can use any email address you want</p>
-                <p>Just don't forget what you choose!</p>
+                <span>
+                    <p>Please note:</p>
+                    <p>There is no email verification at this time.</p>
+                    <p>So, you can use any email address you want</p>
+                    <p>Just don't forget what you choose!</p>
+                </span>
 
                 <form id="registerFormData">
                     <input type="text" id="usernameReg" name="usernameReg" placeholder='username' required pattern="[A-Za-z0-9._-]+" />

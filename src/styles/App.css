@@ -364,6 +364,11 @@ below starts styling for the sign up page
   text-align: left;
   font-size: small;
   padding-bottom: 0;
+  margin: 0;
+}
+
+.form-container span {
+  margin-bottom: 20px;
 }
 
 .form-container form {
