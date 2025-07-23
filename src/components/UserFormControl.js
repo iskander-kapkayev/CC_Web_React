@@ -1,6 +1,6 @@
 /* this component will handle logging in and signing up for a user */
 
-import React from 'react';
+import React, { useState } from 'react';
 
 function UserFormControl() {
     const [form, setForm] = useState('login'); // login form to start
