@@ -5,13 +5,14 @@ function evaluateView(newView) {
     if (newView === 'home') {
         return (
             <div>
-                <Login />
+                <Image />
+                <Post />
             </div>
         );
     } else if (newView === 'login') {
         return (
             <div>
-                <AboutMe />
+                <LoginForm />
             </div>
         );
     } else if (newView === 'about') {
