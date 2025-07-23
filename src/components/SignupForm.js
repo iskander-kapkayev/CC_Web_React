@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-function LoginForm() {
+function SignupForm() {
 
     return (
         <div className="form-container">
@@ -22,4 +22,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default SignupForm;

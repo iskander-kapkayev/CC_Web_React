@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import NavigationBar from './NavigationBar';
+import Image from './Image';
+import Post from './Post';
+import LoginForm from './LoginForm';
+import AboutMe from './AboutMe';
+import Leaderboard from './Leaderboard';
 
 function evaluateView(newView) {
     if (newView === 'home') {
