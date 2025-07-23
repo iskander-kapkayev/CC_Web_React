@@ -29,8 +29,10 @@ function UserFormControl() {
             <div class="form-container">
                 <h2>REGISTER</h2>
 
-                <p>Please note there is no email verification at this time.</p>
-                <p>You can use any email address you want, just don't forget it!</p>
+                <p>Please note:</p>
+                <p>There is no email verification at this time.</p>
+                <p>So, you can use any email address you want</p>
+                <p>Just don't forget what you choose!</p>
 
                 <form id="registerFormData">
                     <input type="text" id="usernameReg" name="usernameReg" placeholder='username' required pattern="[A-Za-z0-9._-]+" />
