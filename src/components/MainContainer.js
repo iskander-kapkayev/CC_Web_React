@@ -4,31 +4,31 @@ import NavigationBar from './NavigationBar';
 function evaluateView(newView) {
     if (newView === 'home') {
         return (
-        <div>
-            <NavigationBar onClick={handleOnClick}/>
-            <Login />
-        </div>
+            <div>
+                <NavigationBar onClick={handleOnClick}/>
+                <Login />
+            </div>
         );
     } else if (newView === 'login') {
         return (
-        <div>
-            <NavigationBar onClick={handleOnClick}/>
-            <AboutMe />
-        </div>
+            <div>
+                <NavigationBar onClick={handleOnClick}/>
+                <AboutMe />
+            </div>
         );
     } else if (newView === 'about') {
         return (
-        <div>
-            <NavigationBar onClick={handleOnClick}/>
-            <AboutMe />
-        </div>
+            <div>
+                <NavigationBar onClick={handleOnClick}/>
+                <AboutMe />
+            </div>
         );
     } else if (newView === 'leader') {
         return (
-        <div>
-            <NavigationBar onClick={handleOnClick}/>
-            <Leaderboard />
-        </div>
+            <div>
+                <NavigationBar onClick={handleOnClick}/>
+                <Leaderboard />
+            </div>
         );
     }
 }
@@ -42,7 +42,9 @@ function MainContainer() {
         setCurrentView(newView);
     }
 
-    return evaluateView(currentView);
+    const newView = evaluateView(currentView);
+
+    return newView;
     
 }
 
