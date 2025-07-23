@@ -363,6 +363,7 @@ below starts styling for the sign up page
 .form-container p {
   text-align: left;
   font-size: small;
+  padding-bottom: 0;
 }
 
 .form-container form {
