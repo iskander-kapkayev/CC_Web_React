@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import NavigationBar from './NavigationBar';
 import Image from './Image';
 import Post from './Post';
-import LoginForm from './LoginForm';
 import AboutMe from './AboutMe';
 import Leaderboard from './Leaderboard';
+import UserFormControl from './UserFormControl';
 
 function evaluateView(newView) {
     if (newView === 'home') {
@@ -17,7 +17,7 @@ function evaluateView(newView) {
     } else if (newView === 'login') {
         return (
             <div>
-                <LoginForm />
+                <UserFormControl />
             </div>
         );
     } else if (newView === 'about') {
