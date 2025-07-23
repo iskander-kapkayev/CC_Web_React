@@ -1,8 +1,9 @@
 /* this will house the navigation bar component */
 /* will adjust to handle different navigation on different pages */
-import React from 'react';
+import React , { useState } from 'react';
 
 function NavigationBar(props) {
+
     return (
         <div className="header-container">
             <h1>Iskander's Caption Contest!</h1>
