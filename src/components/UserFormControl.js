@@ -26,7 +26,7 @@ function UserFormControl() {
 
     function submitLogin(e) {
         e.preventDefault();
-        alert(email, password);
+        alert(`your email is: ${email}, and your pw is ${password}`);
     }
 
     if (form === 'login') {
@@ -37,7 +37,7 @@ function UserFormControl() {
                 <form id="loginFormData" onSubmit={submitLogin}>
                     <input type="email" id="email" value={email} placeholder="email" onChange={handleEmail} required/>
                     <input type="password" id="password" name={password} placeholder="password" onChange={handlePassword}  required/>
-                    <input type="submit" value="SUBMIT"/>
+                    <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
 
                 <div className="link">
