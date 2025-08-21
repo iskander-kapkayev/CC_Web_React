@@ -4,7 +4,17 @@ import React , { useState } from 'react';
 
 function NavigationBar(props) {
 
-    // if token exists, then remove the user login portion of the navigation bar
+    // if token exists, then remove the user login portion of the navigation bar to a sign out option
+
+    // function to delete usertoken and sign out user, redirect to home page
+    function signoutUser(called) {
+
+        // signout can be called by regular user interaction or an expired token check
+        sessionStorage.removeItem('usertoken'); // remove token
+        sessionStorage.removeItem('expirationTime'); // remove token timer
+
+        props.onClick('home'); // set to home page after login!
+    }
 
     if (props.tokenExists) {
         return (
@@ -12,6 +22,7 @@ function NavigationBar(props) {
                 <h1>Iskander's Caption Contest!</h1>
                 <nav>
                     <ul>
+                        <li onClick={() => signoutUser('regular')}>Sign Out</li>
                         <li onClick={() => props.onClick('home')}>Captions</li>
                         <li onClick={() => props.onClick('about')}>About Me</li>
                         <li onClick={() => props.onClick('leaderboard')}>Leaderboard</li>
