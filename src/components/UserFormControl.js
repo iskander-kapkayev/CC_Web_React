@@ -4,19 +4,40 @@ import React, { useState } from 'react';
 
 function UserFormControl() {
     const [form, setForm] = useState('login'); // login form to start
+    const [email, setEmail] = useState(''); // set email as user types
+    const [password, setPassword] = useState(''); // set pw as user types
+    const [username, setUsername] = useState(''); // set username as user types
 
     /* eventually add a function to check for the user web token in cache */
     /* if the token exists and not expired, then user is logged in */
+
+
+    function handleEmail(e) {
+        setEmail(e.target.value);
+    }
+
+    function handlePassword(e) {
+        setPassword(e.target.value);
+    }
+
+    function handleUsername(e) {
+        setUsername(e.target.value);
+    }
+
+    function submitLogin(e) {
+        e.preventDefault();
+        alert(email, password);
+    }
 
     if (form === 'login') {
         return (
             <div className="form-container">
                 <h2>LOGIN</h2>
 
-                <form id="loginFormData">
-                    <input type="email" id="email" name="email" placeholder="email" required/>
-                    <input type="password" id="password" name="password" placeholder="password" required/>
-                    <button type="submit" value="Submit">SUBMIT</button>
+                <form id="loginFormData" onSubmit={submitLogin}>
+                    <input type="email" id="email" value={email} placeholder="email" onChange={handleEmail} required/>
+                    <input type="password" id="password" name={password} placeholder="password" onChange={handlePassword}  required/>
+                    <input type="submit" value="SUBMIT"/>
                 </form>
 
                 <div className="link">
