@@ -23,7 +23,7 @@ function MainContainer() {
         } else if (newView === 'login') {
             return (
                 <div>
-                    <UserFormControl viewChanger={handleOnClick} tokenExists={tokenExists}/>
+                    <UserFormControl viewChanger={handleOnClick} handleTokenExists={handleTokenExists}/>
                 </div>
             );
         } else if (newView === 'about') {
@@ -45,8 +45,8 @@ function MainContainer() {
         setCurrentView(newView);
     }
 
-    function tokenExists(value) {
-        setTokenExists(value);
+    function handleTokenExists(exists) {
+        setTokenExists(exists);
     }
 
     const newView = evaluateView(currentView);

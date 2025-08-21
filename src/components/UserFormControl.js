@@ -112,7 +112,7 @@ function UserFormControl(props) {
                 setForm('login'); // sends you to login form
                 
                 props.viewChanger('home'); // set to home page after login!
-                props.tokenExists(true); // set token exists to true
+                props.handleTokenExists(true); // set token exists to true
             } else {
                 throw new Error('Login submission failed');
             }
