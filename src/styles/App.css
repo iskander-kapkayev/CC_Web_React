@@ -27,10 +27,6 @@ h2 {
   font-size: 16px;
 }
 
-ol il {
-  padding-left: 2rem;
-}
-
 .aboutmecontainer {
   background: #FFFFFF;
   padding: 10px;
@@ -375,6 +371,7 @@ below starts styling for the sign up page
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 0;
+  padding: 45px;
   text-align: center;
 }
 
