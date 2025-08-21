@@ -13,6 +13,7 @@ function NavigationBar(props) {
         sessionStorage.removeItem('usertoken'); // remove token
         sessionStorage.removeItem('expirationTime'); // remove token timer
 
+        props.handleTokenExists(false); // token removed, so doesn't exist
         props.onClick('home'); // set to home page after login!
     }
 

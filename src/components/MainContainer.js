@@ -53,7 +53,7 @@ function MainContainer() {
 
     return (
         <div>
-            <NavigationBar onClick={handleOnClick} tokenExists={tokenExists}/>
+            <NavigationBar onClick={handleOnClick} tokenExists={tokenExists} handleTokenExists={handleTokenExists}/>
             {newView}
         </div>
     );
