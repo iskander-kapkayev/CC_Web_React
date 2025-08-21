@@ -13,10 +13,10 @@ function AboutMe() {
                     This is a free to use caption contest!<br/>
                     Feel free to share the link with others.<br/><br/>
                     In order to participate:<br/>
-                    &nbsp;1. Register and make an account.<br/>
-                    &nbsp;2. Leave a caption on any image.<br/>
-                    &nbsp;3. Vote for your favorite captions!<br/>
-                    &nbsp;4. <strong>Try to get the most likes!</strong><br/><br/>
+                    {`\t`}1. Register and make an account.<br/>
+                    {`\t`}2. Leave a caption on any image.<br/>
+                    {`\t`}3. Vote for your favorite captions!<br/>
+                    {`\t`}4. <strong>Try to get the most likes!</strong><br/><br/>
                     
                     **All images are borrowed!**
                 </p>
