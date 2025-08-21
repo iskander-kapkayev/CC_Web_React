@@ -110,7 +110,9 @@ function UserFormControl(props) {
                 setEmail(''); // clear email
                 setPassword(''); // clear pw
                 setForm('login'); // sends you to login form
+                
                 props.viewChanger('home'); // set to home page after login!
+                props.tokenExists(true); // set token exists to true
             } else {
                 throw new Error('Login submission failed');
             }

@@ -10,6 +10,7 @@ import UserFormControl from './UserFormControl';
 /* the main container will display whatever the currentView is */
 function MainContainer() {
     const [currentView, setCurrentView] = useState('home'); // initially set to home view
+    const [tokenExists, setTokenExists] = useState(false); // generally no token
 
     function evaluateView(newView) {
         if (newView === 'home') {
@@ -22,7 +23,7 @@ function MainContainer() {
         } else if (newView === 'login') {
             return (
                 <div>
-                    <UserFormControl viewChanger={handleOnClick}/>
+                    <UserFormControl viewChanger={handleOnClick} tokenExists={tokenExists}/>
                 </div>
             );
         } else if (newView === 'about') {
@@ -44,11 +45,15 @@ function MainContainer() {
         setCurrentView(newView);
     }
 
+    function tokenExists(value) {
+        setTokenExists(value);
+    }
+
     const newView = evaluateView(currentView);
 
     return (
         <div>
-            <NavigationBar onClick={handleOnClick}/>
+            <NavigationBar onClick={handleOnClick} tokenExists={tokenExists}/>
             {newView}
         </div>
     );
