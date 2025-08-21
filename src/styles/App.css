@@ -374,7 +374,7 @@ below starts styling for the sign up page
   position: relative;
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0 auto 0;
   text-align: center;
 }
 
