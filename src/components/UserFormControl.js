@@ -2,11 +2,63 @@
 
 import React, { useState } from 'react';
 
+// Universal URL to access server
+const servURL = 'https://cc-server-lake.vercel.app';
+
+// we need a post without authorization to
+// sign up check, sign in user, register a user
+async function postNoAuth(URL, bodyData) {
+    const response = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // ensures the body is in JSON format
+        },
+        body: JSON.stringify(bodyData)  // stringifies the data to send in the body
+    });
+    const data = await response.json();
+    return data;
+}
+
+// check user email and username for uniqueness
+async function signUpCheck(thisUsername, thisEmail) {
+    const URL = `${servURL}/checkifexists`;
+    const body = {
+        username: thisUsername,
+        email: thisEmail
+    };
+    const signUpCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
+    return (signUpCheck.message === 'Success');
+}
+
+// registers a new user
+async function signUpRegister(thisUsername, thisEmail, thisPassword) {
+    // first check that you can sign up
+    const uniqueUser = await signUpCheck(thisUsername, thisEmail);
+
+    if (uniqueUser) {
+        const URL = `${servURL}/register`;
+        const body = { 
+            username: thisUsername, 
+            email: thisEmail, 
+            password: thisPassword 
+        };
+        const regCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
+        return (regCheck.message === 'Success');
+    } else {
+        // if you can't sign up, then abort
+        return false;
+    }
+}
+
+
 function UserFormControl() {
     const [form, setForm] = useState('login'); // login form to start
     const [email, setEmail] = useState(''); // set email as user types
     const [password, setPassword] = useState(''); // set pw as user types
     const [username, setUsername] = useState(''); // set username as user types
+    const [error, setError] = useState(''); // set null error
+    const [loading, setLoading] = useState(false); // set loading to false
+    const [success, setSuccess] = useState(null); // changes on submission
 
     /* eventually add a function to check for the user web token in cache */
     /* if the token exists and not expired, then user is logged in */
@@ -28,10 +80,30 @@ function UserFormControl() {
         alert(`your email is: ${email}, and your pw is ${password}`);
     }
 
-    function submitRegistration(e) {
+    const submitRegistration = async (e) => {
         e.preventDefault();
-        alert(`your email is: ${email}, and your pw is ${password}, and your un is ${username}`);
-    }
+        setLoading(true);
+        setError(null);
+        setSuccess(false);
+
+        try {
+            if (await signUpRegister(username, email, password)) {
+                setSuccess(true); // submission was successful!
+                setEmail(''); // clear email
+                setPassword(''); // clear pw
+                setUsername(''); // clear username
+            } else {
+                throw new Error('Form submission failed');
+            }
+
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+
+    };
+
 
     if (form === 'login') {
         return (
