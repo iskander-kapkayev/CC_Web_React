@@ -31,7 +31,7 @@ function UserFormControl() {
 
                 <p>Please note:</p>
                 <p>There is no email verification at this time.</p>
-                <p>So, you can use any email address you want</p>
+                <p>So, you can use any email address you want.</p>
                 <p>Just don't forget what you choose!</p>
                 
                 <h2></h2>
