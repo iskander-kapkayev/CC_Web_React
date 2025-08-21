@@ -11,7 +11,6 @@ function UserFormControl() {
     /* eventually add a function to check for the user web token in cache */
     /* if the token exists and not expired, then user is logged in */
 
-
     function handleEmail(e) {
         setEmail(e.target.value);
     }
@@ -29,6 +28,11 @@ function UserFormControl() {
         alert(`your email is: ${email}, and your pw is ${password}`);
     }
 
+    function submitRegistration(e) {
+        e.preventDefault();
+        alert(`your email is: ${email}, and your pw is ${password}, and your un is ${username}`);
+    }
+
     if (form === 'login') {
         return (
             <div className="form-container">
@@ -36,7 +40,7 @@ function UserFormControl() {
 
                 <form id="loginFormData" onSubmit={submitLogin}>
                     <input type="email" id="email" value={email} placeholder="email" onChange={handleEmail} required/>
-                    <input type="password" id="password" name={password} placeholder="password" onChange={handlePassword}  required/>
+                    <input type="password" id="password" value={password} placeholder="password" onChange={handlePassword}  required/>
                     <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
 
@@ -57,11 +61,11 @@ function UserFormControl() {
                 
                 <h2></h2>
 
-                <form id="registerFormData">
-                    <input type="text" id="usernameReg" name="usernameReg" placeholder='username' required pattern="[A-Za-z0-9._-]+" />
-                    <input type="email" id="emailReg" name="emailReg" placeholder='email' required />
-                    <input type="password" id="passwordReg" name="passwordReg" placeholder='password' required minlength="8" />
-                    <button type="submit" value="Submit">SUBMIT</button>
+                <form id="registerFormData" onSubmit={submitRegistration}>
+                    <input type="text" id="usernameReg" value={username} placeholder='username' onChange={handleUsername} required pattern="[A-Za-z0-9._-]+" />
+                    <input type="email" id="emailReg" value={email} placeholder='email' onChange={handleEmail} required />
+                    <input type="password" id="passwordReg" value={password} placeholder='password' onChange={handlePassword} required minlength="8" />
+                    <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
 
                 <div className="link">
