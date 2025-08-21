@@ -27,6 +27,10 @@ h2 {
   font-size: 16px;
 }
 
+ol il {
+  margin-left: 2rem;
+}
+
 .aboutmecontainer {
   background: #FFFFFF;
   padding: 10px;
