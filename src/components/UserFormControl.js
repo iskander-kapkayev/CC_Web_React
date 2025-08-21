@@ -50,8 +50,30 @@ async function signUpRegister(thisUsername, thisEmail, thisPassword) {
     }
 }
 
+// create a way to sign in as a regular user
+async function signInUser(thisEmail, thisPassword) {
+    const URL = `${servURL}/signin`;
+    const body = {
+        email: thisEmail,
+        password: thisPassword
+    };
+    const signInCheck = await postNoAuth(URL, body); // this will fetch a token
+    if (signInCheck.message === 'Error generating token') {
+        // no token was created
+        return false;
+    } else {
+        // a user token was created and should be stored as a session
+        // also store a 30 minute timer for the token
+        sessionStorage.setItem('usertoken', signInCheck.token);
+        const now = new Date();
+        const expirationTime = now.getTime() + 30 * 60 * 1000; // minutes * seconds * milliseconds
+        sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time
+        return true;
+    }
+}
 
-function UserFormControl() {
+
+function UserFormControl(props) {
     const [form, setForm] = useState('login'); // login form to start
     const [email, setEmail] = useState(''); // set email as user types
     const [password, setPassword] = useState(''); // set pw as user types
@@ -75,11 +97,32 @@ function UserFormControl() {
         setUsername(e.target.value);
     }
 
-    function submitLogin(e) {
+    // login submission
+    const submitLogin = async (e) => {
         e.preventDefault();
-        alert(`your email is: ${email}, and your pw is ${password}`);
-    }
+        setLoading(true);
+        setError(null);
+        setSuccess(false);
 
+        try {
+            if (await signInUser(email, password)) {
+                setSuccess(true); // submission was successful!
+                setEmail(''); // clear email
+                setPassword(''); // clear pw
+                setForm('login'); // sends you to login form
+                props.viewChanger('home'); // set to home page after login!
+            } else {
+                throw new Error('Login submission failed');
+            }
+
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // registration submission
     const submitRegistration = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -92,8 +135,9 @@ function UserFormControl() {
                 setEmail(''); // clear email
                 setPassword(''); // clear pw
                 setUsername(''); // clear username
+                setForm('login'); // sends you to login form
             } else {
-                throw new Error('Form submission failed');
+                throw new Error('Registration submission failed');
             }
 
         } catch (err) {
@@ -101,7 +145,6 @@ function UserFormControl() {
         } finally {
             setLoading(false);
         }
-
     };
 
 
