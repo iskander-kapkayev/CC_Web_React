@@ -22,7 +22,7 @@ function AboutMe() {
                     <li><strong>Try to get the most likes!</strong></li>
                 </ol>
 
-                <p>**All images are borrowed!**</p>
+                <p id="aboutmetext">**All images are borrowed!**</p>
             </div>
             
             <div className="contactcontainer">
