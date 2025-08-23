@@ -1,8 +1,9 @@
 /* this component will handle logging in and signing up for a user */
 
 import React, { useState } from 'react';
+import { servURL, postNoAuth } from './Asyncing.js';
 
-// Universal URL to access server
+/* // Universal URL to access server
 const servURL = 'https://cc-server-lake.vercel.app';
 
 // we need a post without authorization to
@@ -17,7 +18,7 @@ async function postNoAuth(URL, bodyData) {
     });
     const data = await response.json();
     return data;
-}
+} */
 
 // check user email and username for uniqueness
 async function signUpCheck(thisUsername, thisEmail) {
