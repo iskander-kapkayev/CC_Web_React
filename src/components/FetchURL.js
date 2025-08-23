@@ -1,4 +1,4 @@
-/* for all the async handling functions */
+/* this contains the URLs for both server and client side */
 
 // Universal URL to access server
 export const servURL = 'https://cc-server-lake.vercel.app';

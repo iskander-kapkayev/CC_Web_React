@@ -1,78 +1,7 @@
 /* this component will handle logging in and signing up for a user */
 
 import React, { useState } from 'react';
-import { servURL, postNoAuth } from './Asyncing.js';
-
-/* // Universal URL to access server
-const servURL = 'https://cc-server-lake.vercel.app';
-
-// we need a post without authorization to
-// sign up check, sign in user, register a user
-async function postNoAuth(URL, bodyData) {
-    const response = await fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',  // ensures the body is in JSON format
-        },
-        body: JSON.stringify(bodyData)  // stringifies the data to send in the body
-    });
-    const data = await response.json();
-    return data;
-} */
-
-// check user email and username for uniqueness
-async function signUpCheck(thisUsername, thisEmail) {
-    const URL = `${servURL}/checkifexists`;
-    const body = {
-        username: thisUsername,
-        email: thisEmail
-    };
-    const signUpCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
-    return (signUpCheck.message === 'Success');
-}
-
-// registers a new user
-async function signUpRegister(thisUsername, thisEmail, thisPassword) {
-    // first check that you can sign up
-    const uniqueUser = await signUpCheck(thisUsername, thisEmail);
-
-    if (uniqueUser) {
-        const URL = `${servURL}/register`;
-        const body = { 
-            username: thisUsername, 
-            email: thisEmail, 
-            password: thisPassword 
-        };
-        const regCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
-        return (regCheck.message === 'Success');
-    } else {
-        // if you can't sign up, then abort
-        return false;
-    }
-}
-
-// create a way to sign in as a regular user
-async function signInUser(thisEmail, thisPassword) {
-    const URL = `${servURL}/signin`;
-    const body = {
-        email: thisEmail,
-        password: thisPassword
-    };
-    const signInCheck = await postNoAuth(URL, body); // this will fetch a token
-    if (signInCheck.message === 'Error generating token') {
-        // no token was created
-        return false;
-    } else {
-        // a user token was created and should be stored as a session
-        // also store a 30 minute timer for the token
-        sessionStorage.setItem('usertoken', signInCheck.token);
-        const now = new Date();
-        const expirationTime = now.getTime() + 30 * 60 * 1000; // minutes * seconds * milliseconds
-        sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time
-        return true;
-    }
-}
-
+import { signInUser, signUpRegister } from './AsyncLogin.js';
 
 function UserFormControl(props) {
     const [form, setForm] = useState('login'); // login form to start
@@ -115,7 +44,8 @@ function UserFormControl(props) {
                 props.viewChanger('home'); // set to home page after login!
                 props.handleTokenExists(true); // set token exists to true
             } else {
-                throw new Error('Login submission failed');
+                
+                throw new Error('Login submission failed. Try again!');
             }
 
         } catch (err) {
@@ -161,7 +91,7 @@ function UserFormControl(props) {
                     <input type="password" id="password" value={password} placeholder="password" onChange={handlePassword}  required/>
                     <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
-
+                {error && (<p>{error}</p>)}
                 <div className="link">
                     <p>Don't have an account? <a onClick={() => setForm('register')}>REGISTER here</a></p>
                 </div>
