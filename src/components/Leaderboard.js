@@ -28,6 +28,7 @@ function Leaderboard() {
                 setError(null);
             } catch (err) {
                 setError(err);
+                console.log(err);
                 setRetry(prev => prev + 1);
             }
         };
