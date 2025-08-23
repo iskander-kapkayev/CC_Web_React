@@ -1,6 +1,7 @@
 /* this component will handle the Leaderboard display */
 
 import React, { useState, useEffect} from 'react';
+import { servURL } from './FetchURL';
 
 function Leaderboard() {
     const [error, setError] = useState(''); // set null error
