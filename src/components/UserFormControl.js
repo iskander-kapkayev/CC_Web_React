@@ -115,7 +115,7 @@ function UserFormControl(props) {
                     <input type="password" id="passwordReg" value={password} placeholder='password' onChange={handlePassword} required minlength="8" />
                     <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
-
+                {error && (<p>{error}</p>)}
                 <div className="link">
                     <p>Already have an account? <a onClick={() => setForm('login')}>LOGIN here</a></p>
                 </div>

@@ -43,7 +43,7 @@ export async function signInUser(thisEmail, thisPassword) {
     const signInCheck = await postNoAuth(URL, body); // this will fetch a token
     if (signInCheck.message === 'Error generating token') {
         // no token was created
-        return 'false';
+        return false;
     } else {
         // a user token was created and should be stored as a session
         // also store a 30 minute timer for the token
