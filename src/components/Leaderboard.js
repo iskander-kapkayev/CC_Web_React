@@ -35,6 +35,8 @@ function Leaderboard() {
         getleaderboard();
     }, [retry]); // dependency on retry
 
+    console.log(leaders);
+
     if (loading) {
         return (
             <div>
@@ -47,6 +49,7 @@ function Leaderboard() {
             </div>
         );
     } else {
+        console.log('inside of else');
         return (
             <div>
                 <div className="aboutmecontainer">
