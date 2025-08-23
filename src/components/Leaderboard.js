@@ -4,9 +4,9 @@ import React, { useState, useEffect} from 'react';
 import { servURL } from './FetchURL.js';
 
 function Leaderboard() {
-    const [error, setError] = useState(''); // set null error
+    const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(null); // set loading to null
-    const [leaders, setLeaders] = useState(''); // set empty leaderboard
+    const [leaders, setLeaders] = useState({}); // set empty leaderboard
     const [retry, setRetry] = useState(0);
 
     // try to grab the leaderboard
@@ -57,7 +57,7 @@ function Leaderboard() {
 
                     <h2>Leaderboard:</h2>
 
-                        {/* <table id="leaderdisplay" style={{ width: "75%" }}>
+                        <table id="leaderdisplay" style={{ width: "75%" }}>
                             <thead>
                                 <tr>
                                     <th>Username</th>
@@ -74,7 +74,7 @@ function Leaderboard() {
                                 </tr>
                                 ))}
                             </tbody>
-                        </table> */}
+                        </table> 
         
                 </div>
             </div>
