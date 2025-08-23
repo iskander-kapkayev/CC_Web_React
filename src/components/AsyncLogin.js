@@ -1,6 +1,6 @@
 /* for all the async handling functions for signing in */
 
-import { servURL } from './FetchURL.js';
+import { servURL, postNoAuth } from './FetchURL.js';
 
 // check user email and username for uniqueness
 export async function signUpCheck(thisUsername, thisEmail) {
