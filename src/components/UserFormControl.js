@@ -8,7 +8,7 @@ function UserFormControl(props) {
     const [email, setEmail] = useState(''); // set email as user types
     const [password, setPassword] = useState(''); // set pw as user types
     const [username, setUsername] = useState(''); // set username as user types
-    const [error, setError] = useState(''); // set null error
+    const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(false); // set loading to false
     const [success, setSuccess] = useState(null); // changes on submission
 
