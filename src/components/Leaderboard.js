@@ -56,7 +56,7 @@ function Leaderboard() {
 
                     <h2>Leaderboard:</h2>
 
-                        <table id="leaderdisplay" style="width:75%">
+                        <table id="leaderdisplay" style={{ width: "75%" }}>
                             <thead>
                                 <tr>
                                     <th>Username</th>
@@ -65,8 +65,8 @@ function Leaderboard() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {Object.values(leaders).map(([username, votecount, category]) => (
-                                <tr key={username}>
+                                {Object.entries(leaders).map(([key,[username, votecount, category]]) => (
+                                <tr key={key}>
                                     <td>{username}</td>
                                     <td>{votecount}</td>
                                     <td>{category}</td>
