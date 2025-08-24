@@ -11,30 +11,29 @@ function Leaderboard() {
 
     // try to grab the leaderboard
     // if there's a server grab error, try again
-    useEffect(() => {
-        const getleaderboard = async () => {
-            try {
-                setLoading(true);
-                const URL = `${servURL}/leaderboard`;
-                const response = await fetch(URL);
+    
+    const getleaderboard = async () => {
+        try {
+            setLoading(true);
+            const URL = `${servURL}/leaderboard`;
+            const response = await fetch(URL);
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const leaderData = await response.json();
-                setLeaders(leaderData);
-                setLoading(false);
-                setError(null);
-            } catch (err) {
-                setError(err);
-                console.log(err);
-                setRetry(prev => prev + 1);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        };
 
-        getleaderboard();
-    }, []); // dependency on retry
+            const leaderData = await response.json();
+            setLeaders(leaderData);
+            setLoading(false);
+            setError(null);
+        } catch (err) {
+            setError(err);
+            console.log(err);
+            setRetry(prev => prev + 1);
+        }
+    };
+
+    getleaderboard();
 
     console.log(leaders);
 
