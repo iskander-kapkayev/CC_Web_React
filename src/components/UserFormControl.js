@@ -89,38 +89,38 @@ function UserFormControl(props) {
                     <input type="password" id="password" value={password} placeholder="password" onChange={handlePassword}  required/>
                     <button type="submit" value="SUBMIT">SUBMIT</button>
                 </form>
-                {error && (<p>{error}</p>)}
+                <h2>{error && (<p>{error}</p>)}</h2>
                 <div className="link">
                     <p>Don't have an account? <a onClick={() => setForm('register')}>REGISTER here</a></p>
                 </div>
             </div>
         );
-    } else {
-        return (
-            <div className="form-container">
-                <h2>REGISTER</h2>
-
-                <p>Please note:</p>
-                <p>There is no email verification at this time.</p>
-                <p>So, you can use any email address you want.</p>
-                <p>Just don't forget what you choose!</p>
-                
-                <h2></h2>
-
-                <form id="registerFormData" onSubmit={submitRegistration}>
-                    <input type="text" id="usernameReg" value={username} placeholder='username' onChange={handleUsername} required pattern="[A-Za-z0-9._-]+" />
-                    <input type="email" id="emailReg" value={email} placeholder='email' onChange={handleEmail} required />
-                    <input type="password" id="passwordReg" value={password} placeholder='password' onChange={handlePassword} required minlength="8" />
-                    <button type="submit" value="SUBMIT">SUBMIT</button>
-                </form>
-                {error && (<p>{error}</p>)}
-                <div className="link">
-                    <p>Already have an account? <a onClick={() => setForm('login')}>LOGIN here</a></p>
-                </div>
-
-            </div>
-        );
     }
+    
+    return (
+        <div className="form-container">
+            <h2>REGISTER</h2>
+
+            <p>Please note:</p>
+            <p>There is no email verification at this time.</p>
+            <p>So, you can use any email address you want.</p>
+            <p>Just don't forget what you choose!</p>
+            
+            <h2></h2>
+
+            <form id="registerFormData" onSubmit={submitRegistration}>
+                <input type="text" id="usernameReg" value={username} placeholder='username' onChange={handleUsername} required pattern="[A-Za-z0-9._-]+" />
+                <input type="email" id="emailReg" value={email} placeholder='email' onChange={handleEmail} required />
+                <input type="password" id="passwordReg" value={password} placeholder='password' onChange={handlePassword} required minlength="8" />
+                <button type="submit" value="SUBMIT">SUBMIT</button>
+            </form>
+            <h2>{error && (<p>{error}</p>)}</h2>
+            <div className="link">
+                <p>Already have an account? <a onClick={() => setForm('login')}>LOGIN here</a></p>
+            </div>
+
+        </div>
+    );
 }
 
 export default UserFormControl;

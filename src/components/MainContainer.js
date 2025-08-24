@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavigationBar from './NavigationBar';
 import Image from './Image';
 import Post from './Post';
@@ -48,6 +48,15 @@ function MainContainer() {
     function handleTokenExists(exists) {
         setTokenExists(exists);
     }
+
+    // we will run this to check if a token exists when page is refreshed
+
+    useEffect ( () => {
+        const thistoken = sessionStorage.getItem('usertoken');
+        if (thistoken) {
+            handleTokenExists(true);
+        }
+    }, []);
 
     const newView = evaluateView(currentView);
 

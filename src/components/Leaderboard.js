@@ -39,43 +39,38 @@ function Leaderboard() {
 
     if (loading) {
         return (
-            <div>
-                <div className="aboutmecontainer">
+            <div className="aboutmecontainer">
 
-                    <h2>Leaderboard:</h2>
-                    <p>Leaderboard is currently loading...</p>
+                <h2>Leaderboard:</h2>
+                <p>Leaderboard is currently loading...</p>
 
-                </div>
             </div>
         );
     } 
     
     return (
-        <div>
-            <div className="aboutmecontainer">
+        <div className="aboutmecontainer">
 
-                <h2>Leaderboard:</h2>
+            <h2>Leaderboard:</h2>
 
-                    <table id="leaderdisplay" style={{ width: "75%" }}>
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Aura</th>
-                                <th>Power Level</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.entries(leaders).map(([key,[username, votecount, category]]) => (
-                            <tr key={key}>
-                                <td>{username}</td>
-                                <td>{votecount}</td>
-                                <td>{category}</td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </table> 
-    
-            </div>
+                <table id="leaderdisplay" style={{ width: "75%" }}>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Aura</th>
+                            <th>Power Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.entries(leaders).map(([key,[username, votecount, category]]) => (
+                        <tr key={key}>
+                            <td>{username}</td>
+                            <td>{votecount}</td>
+                            <td>{category}</td>
+                        </tr>
+                        ))}
+                    </tbody>
+                </table> 
         </div>
     );
 }
