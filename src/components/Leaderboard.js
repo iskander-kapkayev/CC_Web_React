@@ -7,33 +7,36 @@ function Leaderboard() {
     const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(null); // set loading to null
     const [leaders, setLeaders] = useState({}); // set empty leaderboard
-    const [retry, setRetry] = useState(0);
+    /* const [retry, setRetry] = useState(0); */
 
     // try to grab the leaderboard
     // if there's a server grab error, try again
     
-    const getleaderboard = async () => {
-        try {
-            setLoading(true);
-            const URL = `${servURL}/leaderboard`;
-            const response = await fetch(URL);
+    useEffect(() => {
+        const getLeaderboard = async () => {
+            try {
+                setLoading(true);
+                const URL = `${servURL}/leaderboard`;
+                const response = await fetch(URL);
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const leaderData = await response.json();
+                setLeaders(leaderData);
+                setLoading(false);
+                setError(null);
+            } catch (err) {
+                setError(err);
+                console.log(err);
+                /* setRetry(prev => prev + 1); */
             }
+        };
 
-            const leaderData = await response.json();
-            setLeaders(leaderData);
-            setLoading(false);
-            setError(null);
-        } catch (err) {
-            setError(err);
-            console.log(err);
-            setRetry(prev => prev + 1);
-        }
-    };
+        getLeaderboard();
 
-    getleaderboard();
+    }, []);
 
     console.log(leaders);
 
@@ -53,7 +56,7 @@ function Leaderboard() {
 
             <h2>Leaderboard:</h2>
 
-                <table id="leaderdisplay" style={{ width: "75%" }}>
+                {/* <table id="leaderdisplay" style={{ width: "75%" }}>
                     <thead>
                         <tr>
                             <th>Username</th>
@@ -70,7 +73,7 @@ function Leaderboard() {
                         </tr>
                         ))}
                     </tbody>
-                </table> 
+                </table> */} 
         </div>
     );
 }

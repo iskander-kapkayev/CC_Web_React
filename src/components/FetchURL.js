@@ -2,7 +2,7 @@
 
 // Universal URL to access server
 export const webURL = 'https://cc-web-react.vercel.app/'; // adjusted for new react page
-export const servURL = 'https://cc-server-lake.vercel.app';
+export const servURL = 'https://cc-server-lake.vercel.app'; // server url
 
 /*
 Async function call to fetch http request.
