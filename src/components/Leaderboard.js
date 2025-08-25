@@ -44,7 +44,7 @@ function Leaderboard() {
 
     if (loading) {
         return (
-            <div className="aboutmecontainer">
+            <div className="leaderboard">
 
                 <h2>Leaderboard:</h2>
                 <p>Leaderboard is currently loading...</p>
@@ -54,11 +54,11 @@ function Leaderboard() {
     } 
     
     return (
-        <div className="aboutmecontainer">
+        <div className="leaderboard">
 
             <h2>Leaderboard:</h2>
 
-                <table id="leaderdisplay" style={{ width: "75%" }}>
+                <table id="leaderdisplay">
                     <thead>
                         <tr>
                             <th>Username</th>
