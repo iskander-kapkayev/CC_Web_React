@@ -24,7 +24,9 @@ function Leaderboard() {
                 }
 
                 const leaderData = await response.json();
-                setLeaders(leaderData);
+                const leaderDataArray = Object.values(leaderData).map(value => value); // array of the values
+
+                setLeaders(leaderDataArray);
                 setLoading(false);
                 setError(null);
             } catch (err) {
@@ -38,7 +40,7 @@ function Leaderboard() {
 
     }, []);
 
-    console.log(leaders);
+
 
     if (loading) {
         return (
@@ -65,11 +67,11 @@ function Leaderboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        {Object.entries(leaders).map(([key,[username, votecount, category]]) => (
+                        {leaders.map(key => (
                         <tr key={key}>
-                            <td>{username}</td>
-                            <td>{votecount}</td>
-                            <td>{category}</td>
+                            <td>{key.username}</td>
+                            <td>{key.votecount}</td>
+                            <td>{key.category}</td>
                         </tr>
                         ))}
                     </tbody>
