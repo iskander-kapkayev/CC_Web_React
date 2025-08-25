@@ -40,7 +40,7 @@ function Leaderboard() {
 
     }, []);
 
-
+    console.log(leaders);
 
     if (loading) {
         return (
