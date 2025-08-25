@@ -56,7 +56,7 @@ function Leaderboard() {
 
             <h2>Leaderboard:</h2>
 
-                {/* <table id="leaderdisplay" style={{ width: "75%" }}>
+                <table id="leaderdisplay" style={{ width: "75%" }}>
                     <thead>
                         <tr>
                             <th>Username</th>
@@ -73,7 +73,7 @@ function Leaderboard() {
                         </tr>
                         ))}
                     </tbody>
-                </table> */} 
+                </table>
         </div>
     );
 }

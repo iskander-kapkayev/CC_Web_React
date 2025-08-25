@@ -3,7 +3,7 @@ import NavigationBar from './NavigationBar';
 import Image from './Image';
 import Post from './Post';
 import AboutMe from './AboutMe';
-import NewLeaderboard from './NewLeaderboard';
+import Leaderboard from './Leaderboard';
 import UserFormControl from './UserFormControl';
 
 
@@ -35,7 +35,7 @@ function MainContainer() {
         } else if (newView === 'leader') {
             return (
                 <div>
-                    <NewLeaderboard />
+                    <Leaderboard />
                 </div>
             );
         }

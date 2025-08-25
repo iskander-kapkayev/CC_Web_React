@@ -26,7 +26,7 @@ function NavigationBar(props) {
                         <li onClick={() => signoutUser('regular')}>Sign Out</li>
                         <li onClick={() => props.onClick('home')}>Captions</li>
                         <li onClick={() => props.onClick('about')}>About Me</li>
-                        <li onClick={() => props.onClick('leaderboard')}>Leaderboard</li>
+                        <li onClick={() => props.onClick('leader')}>Leaderboard</li>
                     </ul>
                 </nav>
             </div>
@@ -40,7 +40,7 @@ function NavigationBar(props) {
                         <li onClick={() => props.onClick('login')}>Login</li>
                         <li onClick={() => props.onClick('home')}>Captions</li>
                         <li onClick={() => props.onClick('about')}>About Me</li>
-                        <li onClick={() => props.onClick('leaderboard')}>Leaderboard</li>
+                        <li onClick={() => props.onClick('leader')}>Leaderboard</li>
                     </ul>
                 </nav>
             </div>
