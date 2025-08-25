@@ -3,7 +3,7 @@ import React from 'react';
 function NewLeaderboard() {
     return (
 
-        <div className="aboutmecontainer">
+        <div className="leaderboard">
 
                 <h2>Leaderboard:</h2>
                 <p>Leaderboard is currently loading...</p>
