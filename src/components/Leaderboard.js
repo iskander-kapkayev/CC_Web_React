@@ -67,11 +67,11 @@ function Leaderboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        {leaders.map(key => (
-                        <tr key={key}>
-                            <td>{key.username}</td>
-                            <td>{key.votecount}</td>
-                            <td>{key.category}</td>
+                        {leaders.map( user => (
+                        <tr key={user.username}>
+                            <td>{user.username}</td>
+                            <td>{user.votecount}</td>
+                            <td>{user.category}</td>
                         </tr>
                         ))}
                     </tbody>
