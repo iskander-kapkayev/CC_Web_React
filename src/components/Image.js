@@ -43,7 +43,7 @@ function Image() {
                     const imageURL = await response.json();
 
                     
-                    setImages(imageURL);
+                    setImages(imageURL.imageurls);
                     setCurrentIndex(0);
                     sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
                     localStorage.setItem('currentIndex', 0);
