@@ -71,7 +71,7 @@ function Image() {
     }
 
     /* display the current image! */
-    /* const currentSRC = `${images[currentIndex].slice(1)}`; */
+    const currentSRC = images[currentIndex];
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
     return (
@@ -85,7 +85,7 @@ function Image() {
                 ))}
             </span>
 
-            <img id="myImage" alt="imageServerURL" src={images[currentIndex].slice(1)}/>
+            <img id="myImage" alt="imageServerURL" src={currentSRC}/>
 
             <span>
                 <br/>
