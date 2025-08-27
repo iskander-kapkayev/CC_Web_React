@@ -4,7 +4,7 @@ import React from 'react';
 
 function Post() {
     return (
-        <div>From Post</div>
+        <div className='image-container'>From Post</div>
     );
 }
 
