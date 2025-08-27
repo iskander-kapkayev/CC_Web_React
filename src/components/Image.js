@@ -41,11 +41,10 @@ function Image() {
                     }
     
                     const imageURL = await response.json();
-                    const imageURLExtract = Object.values(imageURL);
                     
-                    setImages(imageURLExtract);
+                    setImages(imageURL);
                     setCurrentIndex(0);
-                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURLExtract));
+                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
                     localStorage.setItem('currentIndex', 0);
                     setLoading(false);
                     setError(null);
@@ -77,7 +76,7 @@ function Image() {
 
     return (
         <div className='image-container'>
-
+            {images}
             <span>
                 {imageButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(index)}>
