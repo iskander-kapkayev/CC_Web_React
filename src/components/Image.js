@@ -77,7 +77,7 @@ function Image() {
 
     return (
         <div className='image-container'>
-            {images}
+            
             <span>
                 {imageButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(index)}>
