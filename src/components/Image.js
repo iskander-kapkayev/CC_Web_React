@@ -64,7 +64,7 @@ function Image() {
     /* if server is loading */
     if (loading) {
         return (
-            <div>
+            <div className='image-container'>
                 <h2>Images are loading from the server...</h2>
             </div>
         );
