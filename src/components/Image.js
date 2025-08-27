@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
 
 function Image() {
-    const [images, setImages] = useState(null);
+    const [images, setImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
@@ -41,6 +41,7 @@ function Image() {
                     }
     
                     const imageURL = await response.json();
+
                     
                     setImages(imageURL);
                     setCurrentIndex(0);
