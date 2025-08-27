@@ -42,7 +42,7 @@ function Image() {
     
                     const imageURL = await response.json();
                     const imageURLArray = Object.values(imageURL).map(value => value); // array of the values
-    
+                    console.log(imageURLArray)
                     setImages(imageURLArray);
                     setCurrentIndex(0);
                     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLArray));
@@ -61,6 +61,7 @@ function Image() {
 
     }, []); //no dependency, but we can change to for server issues
 
+    console.log(images);
     /* if server is loading */
     if (loading) {
         return (
