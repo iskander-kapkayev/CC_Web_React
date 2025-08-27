@@ -45,7 +45,7 @@ function Image() {
     
                     setImages(imageURLArray);
                     setCurrentIndex(0);
-                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
+                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURLArray));
                     localStorage.setItem('currentIndex', 0);
                     setLoading(false);
                     setError(null);
@@ -64,7 +64,7 @@ function Image() {
     /* if server is loading */
     if (loading) {
         return (
-            <div className='header-container'>
+            <div className='image-container'>
                 <h2>Images are loading from the server...</h2>
             </div>
         );
@@ -75,7 +75,7 @@ function Image() {
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
     return (
-        <div className='header-container'>
+        <div className='image-container'>
 
             <span>
                 {imageButtons.map((label, index) => (
