@@ -5,6 +5,7 @@
 /*  */
 
 import React, { useState, useEffect } from 'react';
+import { servURL } from './FetchURL.js';
 
 function Image() {
     const [images, setImages] = useState([]);
