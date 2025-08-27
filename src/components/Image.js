@@ -41,11 +41,10 @@ function Image() {
                     }
     
                     const imageURL = await response.json();
-                    const imageURLArray = Object.values(imageURL) // array of the values
                     
-                    setImages(imageURLArray);
+                    setImages(imageURL);
                     setCurrentIndex(0);
-                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURLArray));
+                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
                     localStorage.setItem('currentIndex', 0);
                     setLoading(false);
                     setError(null);
@@ -70,8 +69,9 @@ function Image() {
         );
     }
 
+    console.log(images);
     /* display the current image! */
-    const currentSRC = `.${images[0][currentIndex]}`;
+    const currentSRC = `.${images[currentIndex]}`;
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
     return (
