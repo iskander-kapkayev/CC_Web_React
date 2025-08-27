@@ -45,7 +45,7 @@ function Image() {
                     
                     setImages(imageURL.imageurls);
                     setCurrentIndex(0);
-                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
+                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL.imageurls));
                     localStorage.setItem('currentIndex', 0);
                     setLoading(false);
                     setError(null);
