@@ -195,7 +195,6 @@ Below styles will reflect the navigation menu
   align-items: center;
   overflow: auto;
   display: flex; /* use Flexbox to align items */
-  justify-content: space-around; /* evenly space items */
   margin-left: auto;
   margin-right: auto;
   margin: 16px;
