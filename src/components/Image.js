@@ -85,7 +85,7 @@ function Image() {
                 ))}
             </span>
 
-            <img id="myImage" alt="imageServerURL" src={currentSRC}/>
+            <img id="myImage" alt={currentSRC} src={currentSRC}/>
 
             <span>
                 <br/>
