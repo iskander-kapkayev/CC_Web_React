@@ -9,7 +9,7 @@ import { servURL } from './FetchURL.js';
 
 function Image() {
     const [images, setImages] = useState({});
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(null); // set original state to 1
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
     
@@ -25,7 +25,7 @@ function Image() {
 
             /* set currentIndex of image roullette */
             const currentIndexExists = localStorage.getItem('currentIndex');
-            currentIndexExists ? setCurrentIndex(Number(currentIndexExists)) : setCurrentIndex(0);
+            currentIndexExists ? setCurrentIndex(Number(currentIndexExists)) : setCurrentIndex(1);
             setImages(JSON.parse(checkImagesExist)); // changes string to array
             
         } else {
@@ -44,9 +44,9 @@ function Image() {
                     /* const imageURLArray = Object.values(imageURL).map(value => value); // array of the values */
                     
                     setImages(imageURL);
-                    setCurrentIndex(0);
+                    setCurrentIndex(1);
                     sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
-                    localStorage.setItem('currentIndex', 0);
+                    localStorage.setItem('currentIndex', 1);
                     setLoading(false);
                     setError(null);
                 } catch (err) {
