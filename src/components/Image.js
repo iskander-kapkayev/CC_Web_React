@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
 
 function Image() {
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
@@ -41,11 +41,11 @@ function Image() {
                     }
     
                     const imageURL = await response.json();
-                    const imageURLArray = Object.values(imageURL).map(value => value); // array of the values
+                    /* const imageURLArray = Object.values(imageURL).map(value => value); // array of the values */
                     
-                    setImages(imageURLArray);
+                    setImages(imageURL);
                     setCurrentIndex(0);
-                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURLArray));
+                    sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
                     localStorage.setItem('currentIndex', 0);
                     setLoading(false);
                     setError(null);
@@ -73,7 +73,8 @@ function Image() {
     /* display the current image! */
     const currentSRC = images[currentIndex];
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
+    console.log(images);
+    console.log(images[currentIndex]);
     return (
         <div className='image-container'>
             
