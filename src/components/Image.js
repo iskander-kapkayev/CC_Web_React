@@ -14,7 +14,9 @@ function Image() {
     const [error, setError] = useState(null);
     
     function handleImageSelection(newIndex) {
+        setLoading(true);
         setCurrentIndex(newIndex);
+        setLoading(false);
     }
 
     /* on startup of webpage, double check if imageURLs is in cache */
@@ -73,15 +75,13 @@ function Image() {
     /* display the current image! */
     const currentSRC = images[currentIndex];
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    console.log(images);
-    console.log(currentIndex);
-    console.log(images[currentIndex]);
+
     return (
         <div className='image-container'>
             
             <span>
                 {imageButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(index)}>
+                    <button key={index} onClick={() => handleImageSelection(label)}>
                         {label}
                     </button>
                 ))}
