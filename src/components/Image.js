@@ -17,6 +17,7 @@ function Image() {
     function handleImageSelection(newIndex) {
         setLoading(true); // loading screen
         setCurrentIndex(newIndex); // set new index
+        localStorage.setItem('currentIndex', currentIndex); // store locally
         setCurrentsrc(images[currentIndex]); // new src based on index
         setLoading(false); // done loading
     }
@@ -30,6 +31,7 @@ function Image() {
         }
 
         setCurrentIndex(newIndex); // set new index
+        localStorage.setItem('currentIndex', currentIndex);
         setCurrentsrc(images[currentIndex]); // new src based on index
         setLoading(false); // done loading
     }
@@ -43,6 +45,7 @@ function Image() {
         }
 
         setCurrentIndex(newIndex); // set new index
+        localStorage.setItem('currentIndex', currentIndex);
         setCurrentsrc(images[currentIndex]); // new src based on index
         setLoading(false); // done loading
     }
@@ -71,7 +74,6 @@ function Image() {
                     localStorage.setItem('currentIndex', 1);
                 }
                 
-                sessionStorage.setItem('imageURLs', JSON.stringify(imageURL));
                 setCurrentsrc(images[currentIndex]);
                 setLoading(false);
                 setError(null);
@@ -99,7 +101,7 @@ function Image() {
                     </button>
                 ))}
             </span>
-            
+
             <h2></h2>
 
             {loading ? (
