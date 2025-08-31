@@ -14,6 +14,8 @@ function Image() {
     const [error, setError] = useState(null);
     const [currentsrc, setCurrentsrc] = useState(null); // will default to first image
     
+    setLoading(true); // load until use effect
+
     function handleImageSelection(newIndex) {
         setLoading(true); // loading screen
         setCurrentIndex(newIndex); // set new index
