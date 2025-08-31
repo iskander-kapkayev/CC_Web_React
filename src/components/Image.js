@@ -65,9 +65,9 @@ function Image() {
                 } else {
                     localStorage.setItem('currentIndex', 1);
                 }
-                console.log(`this is the current index: ${currentIndex}`);
-                console.log(`this is the image src: ${images[currentIndex]}`);
-                setCurrentsrc(images[currentIndex]);
+                console.log(`this is the current index: ${currentIndexExists}`);
+                console.log(`this is the image src: ${imageURL[currentIndexExists]}`);
+                setCurrentsrc(imageURL[currentIndexExists]);
                 setLoading(false);
                 setError(null);
             } catch (err) {
