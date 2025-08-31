@@ -9,10 +9,10 @@ import { servURL } from './FetchURL.js';
 
 function Image() {
     const [images, setImages] = useState({}); // will grab from server every time
-    const [currentIndex, setCurrentIndex] = useState(null); // set original state to 1
+    const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
-    const [currentsrc, setCurrentsrc] = useState(null); // will default to first image
+    const [currentsrc, setCurrentsrc] = useState(`public/assets/images/guy_kakashi.gif`); // will default to first image
     
     function handleImageSelection(newIndex) {
         setCurrentIndex(newIndex); // set new index
