@@ -16,8 +16,8 @@ function Image() {
     
     function handleImageSelection(newIndex) {
         setCurrentIndex(newIndex); // set new index
-        localStorage.setItem('currentIndex', currentIndex); // store locally
-        setCurrentsrc(images[currentIndex]); // new src based on index
+        localStorage.setItem('currentIndex', newIndex); // store locally
+        setCurrentsrc(images[newIndex]); // new src based on index
     }
 
     function previousImageSelection() {
@@ -27,8 +27,8 @@ function Image() {
         }
 
         setCurrentIndex(newIndex); // set new index
-        localStorage.setItem('currentIndex', currentIndex);
-        setCurrentsrc(images[currentIndex]); // new src based on index
+        localStorage.setItem('currentIndex', newIndex);
+        setCurrentsrc(images[newIndex]); // new src based on index
     }
 
     function nextImageSelection() {
@@ -38,8 +38,8 @@ function Image() {
         }
 
         setCurrentIndex(newIndex); // set new index
-        localStorage.setItem('currentIndex', currentIndex);
-        setCurrentsrc(images[currentIndex]); // new src based on index
+        localStorage.setItem('currentIndex', newIndex);
+        setCurrentsrc(images[newIndex]); // new src based on index
     }
 
     /* on startup, always grab all images from server */
@@ -65,8 +65,7 @@ function Image() {
                 } else {
                     localStorage.setItem('currentIndex', 1);
                 }
-                console.log(`this is the current index: ${currentIndexExists}`);
-                console.log(`this is the image src: ${imageURL[currentIndexExists]}`);
+
                 setCurrentsrc(imageURL[currentIndexExists]);
                 setLoading(false);
                 setError(null);
