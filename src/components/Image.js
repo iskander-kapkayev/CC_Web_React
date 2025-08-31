@@ -14,19 +14,13 @@ function Image() {
     const [error, setError] = useState(null);
     const [currentsrc, setCurrentsrc] = useState(null); // will default to first image
     
-    setLoading(true); // load until use effect
-
     function handleImageSelection(newIndex) {
-        setLoading(true); // loading screen
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', currentIndex); // store locally
         setCurrentsrc(images[currentIndex]); // new src based on index
-        setLoading(false); // done loading
     }
 
     function previousImageSelection() {
-        setLoading(true); // loading screen
-
         const newIndex = currentIndex - 1;
         if (newIndex < 1) {
             newIndex = 20; // reset back to 20
@@ -35,12 +29,9 @@ function Image() {
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', currentIndex);
         setCurrentsrc(images[currentIndex]); // new src based on index
-        setLoading(false); // done loading
     }
 
     function nextImageSelection() {
-        setLoading(true); // loading screen
-
         const newIndex = currentIndex + 1;
         if (newIndex > 20) {
             newIndex = 1; // reset back to 20
@@ -49,7 +40,6 @@ function Image() {
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', currentIndex);
         setCurrentsrc(images[currentIndex]); // new src based on index
-        setLoading(false); // done loading
     }
 
     /* on startup, always grab all images from server */
