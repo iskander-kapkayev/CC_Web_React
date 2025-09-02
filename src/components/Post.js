@@ -1,16 +1,17 @@
 /* handles posts from users */
 
 import React, { useState, useEffect } from 'react';
+import { servURL } from './FetchURL.js';
 
 /* this passes a prop called imageid */
 function Post(props) {
-    const [loading, setLoading] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
 
     const { currentIndex } = props;
 
-/*     useEffect(() => {
+    useEffect(() => {
 
         const grabCaptions = async () => {
             try {
@@ -35,7 +36,9 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [currentIndex]); // if imageid changes, re-render */
+    }, [currentIndex]); // if imageid changes, re-render 
+
+    console.log(captions);
 
     return (
         <div className='image-container'>
@@ -46,7 +49,7 @@ function Post(props) {
                     : 
                     (
                         <div>
-                            {captions}
+                            <p>nothing to see here</p>
                         </div>
                     )
                 }

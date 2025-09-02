@@ -5,7 +5,7 @@ import { servURL } from './FetchURL.js';
 
 function Leaderboard() {
     const [error, setError] = useState(null); // set null error
-    const [loading, setLoading] = useState(null); // set loading to null
+    const [loading, setLoading] = useState(false); // set loading to null
     const [leaders, setLeaders] = useState([]); // set empty leaderboard
     /* const [retry, setRetry] = useState(0); */
 

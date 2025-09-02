@@ -11,7 +11,7 @@ import Post from './Post';
 function Image() {
     const [images, setImages] = useState({}); // will grab from server every time
     const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
-    const [loading, setLoading] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [currentsrc, setCurrentsrc] = useState(`public/assets/images/guy_kakashi.gif`); // will default to first image
     
@@ -22,7 +22,7 @@ function Image() {
     }
 
     function previousImageSelection() {
-        const newIndex = currentIndex - 1;
+        let newIndex = currentIndex - 1;
         if (newIndex < 1) {
             newIndex = 20; // reset back to 20
         }
@@ -33,7 +33,7 @@ function Image() {
     }
 
     function nextImageSelection() {
-        const newIndex = currentIndex + 1;
+        let newIndex = currentIndex + 1;
         if (newIndex > 20) {
             newIndex = 1; // reset back to 20
         }
