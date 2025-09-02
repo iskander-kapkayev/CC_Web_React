@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavigationBar from './NavigationBar';
 import Image from './Image';
-import Post from './Post';
 import AboutMe from './AboutMe';
 import Leaderboard from './Leaderboard';
 import UserFormControl from './UserFormControl';

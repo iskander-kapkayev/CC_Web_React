@@ -13,7 +13,7 @@ function Post(props) {
         const grabCaptions = async () => {
             try {
                 setLoading(true);
-                const URL = `${servURL}/collectcaptions?imageid=${props.imageid}`;
+                const URL = `${servURL}/collectcaptions?imageid=${props.currentIndex}`;
                 const response = await fetch(URL);
 
                 if (!response.ok) {

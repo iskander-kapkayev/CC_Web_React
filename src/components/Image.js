@@ -102,7 +102,7 @@ function Image() {
             ) : (
                 <div>
                     <img id="myImage" alt={currentsrc} src={currentsrc}/>
-                    <Post imageid={currentIndex} />
+                    <Post currentIndex={currentIndex} />
                 </div>
             )}
 
