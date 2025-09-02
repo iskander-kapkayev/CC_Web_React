@@ -8,7 +8,7 @@ function Post(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
-    const [captionKeys, setCaptionKeys] = useState();
+    const [captionKeys, setCaptionKeys] = useState([]);
 
     const { currentIndex } = props;
 
