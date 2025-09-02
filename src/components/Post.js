@@ -33,7 +33,7 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [props.imageid]); // if imageid changes, re-render
+    }, [props.currentIndex]); // if imageid changes, re-render
 
     return (
         <div className='image-container'>
