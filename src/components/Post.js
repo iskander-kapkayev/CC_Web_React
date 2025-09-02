@@ -8,9 +8,9 @@ function Post(props) {
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
 
-    const currentIndex = props.currentIndex;
+    const { currentIndex } = props;
 
-    useEffect(() => {
+/*     useEffect(() => {
 
         const grabCaptions = async () => {
             try {
@@ -35,12 +35,12 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [currentIndex]); // if imageid changes, re-render
+    }, [currentIndex]); // if imageid changes, re-render */
 
     return (
         <div className='image-container'>
             <h2>User Captions:</h2>
-            <div id="post-container" className="post-container">
+            <div className="post-container">
                 {loading ? 
                     ( <h2>Captions are loading from the server...</h2>) 
                     : 
