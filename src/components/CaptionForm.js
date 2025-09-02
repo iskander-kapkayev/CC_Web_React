@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-function CaptionForm() {
+function CaptionForm(props) {
     return (
 
         <div className="form-container" id="captionform">
