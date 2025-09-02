@@ -105,7 +105,6 @@ function Image() {
 
             <span>
                 <br/>
-                <br/>
                 <button onClick={previousImageSelection}>Prev Image</button>
                 <button onClick={nextImageSelection}>Next Image</button>
                 <br/>
