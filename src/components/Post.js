@@ -51,7 +51,7 @@ function Post(props) {
                         <p>No captions available.</p>
                     ) : (
                         captionKeys.map(captionId => (
-                            <div key={captionId}>
+                            <div key={captionId} className='post'>
                                 <span id='captuser'>
                                     <span id='postCaption'>{captions[captionId].captiontext} </span>
                                     <span id='postUser'> - {captions[captionId].username} #{captions[captionId].category} </span>
