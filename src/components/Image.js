@@ -7,8 +7,9 @@
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
 import Post from './Post';
+import CaptionForm from './CaptionForm';
 
-function Image() {
+function Image(props) {
     const [images, setImages] = useState({}); // will grab from server every time
     const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
     const [loading, setLoading] = useState(false);
@@ -110,7 +111,8 @@ function Image() {
                 <br/>
             </span>
 
-            <Post currentIndex={currentIndex} />
+            <Post currentIndex={currentIndex} tokenExists={props.tokenExists} handleTokenExists={props.handleTokenExists}/>
+            <CaptionForm tokenExists={props.tokenExists} handleTokenExists={props.handleTokenExists}/>
         </div>
     );
 }

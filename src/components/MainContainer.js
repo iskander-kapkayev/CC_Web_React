@@ -15,7 +15,7 @@ function MainContainer() {
         if (newView === 'home') {
             return (
                 <div>
-                    <Image />
+                    <Image tokenExists={tokenExists} handleTokenExists={handleTokenExists} />
                 </div>
             );
         } else if (newView === 'login') {

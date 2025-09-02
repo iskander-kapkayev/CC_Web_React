@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
 
-/* this passes a prop called imageid */
+/* this passes a prop called imageid from image */
+/* also passes along tokenExists and handleTokenExists() from main */
 function Post(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
 
-    const { currentIndex } = props;
+    const { currentIndex } = props; // de-structure prop from image
 
     useEffect(() => {
 
