@@ -1,10 +1,55 @@
 /* handles posts from users */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Post() {
+/* this passes a prop called imageid */
+function Post(props) {
+    const [loading, setLoading] = useState(null);
+    const [error, setError] = useState(null);
+    const [captions, setCaptions] = useState({});
+
+    useEffect(() => {
+
+        const grabCaptions = async () => {
+            try {
+                setLoading(true);
+                const URL = `${servURL}/collectcaptions?imageid=${props.imageid}`;
+                const response = await fetch(URL);
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const captionList = await response.json();
+
+                setCaptions(captionList);
+                setLoading(false);
+                setError(null);
+            } catch (err) {
+                setError(err);
+                console.log(err);
+            }
+        };
+
+        grabCaptions();
+
+    }, [props.imageid]); // if imageid changes, re-render
+
     return (
-        <div className='image-container'>From Post</div>
+        <div className='image-container'>
+            <h2>User Captions:</h2>
+            <div id="post-container" className="post-container">
+                {loading ? 
+                    ( <h2>Captions are loading from the server...</h2>) 
+                    : 
+                    (
+                        <div>
+                            {captions}
+                        </div>
+                    )
+                }
+            </div>
+        </div>
     );
 }
 

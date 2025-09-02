@@ -17,7 +17,6 @@ function MainContainer() {
             return (
                 <div>
                     <Image />
-                    <Post />
                 </div>
             );
         } else if (newView === 'login') {

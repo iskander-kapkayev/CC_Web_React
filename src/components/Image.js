@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
+import Post from './Post';
 
 function Image() {
     const [images, setImages] = useState({}); // will grab from server every time
@@ -99,7 +100,10 @@ function Image() {
             {loading ? (
                 <h2>Images are loading from the server...</h2>
             ) : (
-                <img id="myImage" alt={currentsrc} src={currentsrc}/>
+                <div>
+                    <img id="myImage" alt={currentsrc} src={currentsrc}/>
+                    <Post imageid={currentsrc} />
+                </div>
             )}
 
             <span>
