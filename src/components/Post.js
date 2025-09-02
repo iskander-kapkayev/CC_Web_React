@@ -8,12 +8,14 @@ function Post(props) {
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
 
+    const currentIndex = props.currentIndex;
+
     useEffect(() => {
 
         const grabCaptions = async () => {
             try {
                 setLoading(true);
-                const URL = `${servURL}/collectcaptions?imageid=${props.currentIndex}`;
+                const URL = `${servURL}/collectcaptions?imageid=${currentIndex}`;
                 const response = await fetch(URL);
 
                 if (!response.ok) {
@@ -33,7 +35,7 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [props.currentIndex]); // if imageid changes, re-render
+    }, [currentIndex]); // if imageid changes, re-render
 
     return (
         <div className='image-container'>
