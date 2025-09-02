@@ -100,11 +100,10 @@ function Image() {
             {loading ? (
                 <h2>Images are loading from the server...</h2>
             ) : (
-                <div>
-                    <img id="myImage" alt={currentsrc} src={currentsrc}/>
-                    <Post currentIndex={currentIndex} />
-                </div>
+                <img id="myImage" alt={currentsrc} src={currentsrc}/>
             )}
+
+            <h2></h2>
 
             <span>
                 <br/>
@@ -112,6 +111,10 @@ function Image() {
                 <button onClick={nextImageSelection}>Next Image</button>
                 <br/>
             </span>
+
+            <h2></h2>
+
+            <Post currentIndex={currentIndex} />
         </div>
     );
 }
