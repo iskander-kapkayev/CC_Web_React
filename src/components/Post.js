@@ -50,6 +50,21 @@ function Post(props) {
                     (
                         <div>
                             <p>nothing to see here</p>
+                            {Object.keys(captions).forEach(captionid => {
+                                (
+                                <div>
+                                    <span id='captuser'>
+                                        <span id='postCaption'>{captions[captionid].captiontext} </span>
+                                        <span id='postUser'> - {captions[captionid].username} #{captions[captionid].category} </span>
+                                    </span>
+                                    <div id='postUpvotes'>
+                                        <span class='heart'> <a><i id='downvoteheart' class="material-symbols-outlined">remove</i></a></span>
+                                        <span class='votenum'>{captions[captionid].votecount}</span>
+                                        <span class='heart'> <a><i id='upvoteheart' class="material-symbols-outlined">add</i></a></span>
+                                    </div>
+                                </div>
+                                )
+                            })}
                         </div>
                     )
                 }
