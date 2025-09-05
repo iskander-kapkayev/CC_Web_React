@@ -1,7 +1,17 @@
 /* for all the async handling functions for signing in */
 
 import { servURL, postNoAuth } from './FetchURL.js';
-import jwt_decode from 'jwt-decode'; // or a similar library
+
+/* this will allow us to see the payload from jwt */
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}
 
 // check user email and username for uniqueness
 export async function signUpCheck(thisUsername, thisEmail) {
@@ -49,7 +59,7 @@ export async function signInUser(thisEmail, thisPassword) {
         // a user token was created and should be stored as a session
         // also store a 30 minute timer for the token
         sessionStorage.setItem('usertoken', signInCheck.token);
-        sessionStorage.setItem('username', jwt_decode(signInCheck.token));
+        sessionStorage.setItem('username', parseJwt(signInCheck.token));
         const now = new Date();
         const expirationTime = now.getTime() + 30 * 60 * 1000; // minutes * seconds * milliseconds
         sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time
