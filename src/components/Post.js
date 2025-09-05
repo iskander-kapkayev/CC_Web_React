@@ -10,7 +10,10 @@ function Post(props) {
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
 
+    /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
+    const { tokenExists } = props;
+    const { handleTokenExists } = props;
 
     useEffect(() => {
 
@@ -36,6 +39,56 @@ function Post(props) {
         };
 
         grabCaptions();
+
+/*         const grabUserCheckToken = async () => {
+            try {
+                setLoading(true);
+                // grab username from token encryption
+                const sessionToken = sessionStorage.getItem('usertoken');
+                if (sessionToken) {
+                    let body = {}; // empty body data 
+                    let URL = `${servURL}/grabusername`;
+                    let response = await fetch(URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',  // set body format to json
+                            'Authorization': `Bearer ${sessionToken}` // send authorization token
+                        },
+                        body: JSON.stringify(body)  // stringifies the data to send in the body
+                    });
+
+                    if (!response.ok) {
+                        handleTokenExists(false);
+                        throw new Error('Token has expired or does not exist');
+                    }
+
+                    let currentUser = await response.json();
+                } 
+                // now that we have the user
+                // grab the captiontext user voted for
+                body = {
+                    username: thisusername.username,
+                    imageid: currentIndex,
+                }; // body data 
+                URL = `${servURL}/grabuservotes`;
+                const thisuservotes = await postAuth(URL, body, thistoken);
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const captionList = await response.json();
+
+                setCaptions(captionList);
+                setLoading(false);
+                setError(null);
+            } catch (err) {
+                setError(err);
+                console.log(err);
+            }
+        };
+
+        grabCaptions(); */
 
     }, [currentIndex]); // if imageid changes, re-render 
 
