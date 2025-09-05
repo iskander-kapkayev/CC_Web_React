@@ -57,12 +57,14 @@ export async function signInUser(thisEmail, thisPassword) {
         return false;
     } else {
         // a user token was created and should be stored as a session
-        // also store a 30 minute timer for the token
         sessionStorage.setItem('usertoken', signInCheck.token);
-        sessionStorage.setItem('username', parseJwt(signInCheck.token));
-        const now = new Date();
+        const payloadFromToken = parseJwt(signInCheck.token);
+        sessionStorage.setItem('username', payloadFromToken.username);
+
+        /* timer */
+        /* const now = new Date();
         const expirationTime = now.getTime() + 30 * 60 * 1000; // minutes * seconds * milliseconds
-        sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time
+        sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time */
         return true;
     }
 }
