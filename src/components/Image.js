@@ -16,6 +16,10 @@ function Image(props) {
     const [error, setError] = useState(null);
     const [currentsrc, setCurrentsrc] = useState(`public/assets/images/guy_kakashi.gif`); // will default to first image
     
+    // destructure from props
+    const { tokenExists } = props;
+    const { handleTokenExists } = props;
+
     function handleImageSelection(newIndex) {
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', newIndex); // store locally
@@ -111,8 +115,8 @@ function Image(props) {
                 <br/>
             </span>
 
-            <Post currentIndex={currentIndex} tokenExists={props.tokenExists} handleTokenExists={props.handleTokenExists}/>
-            <CaptionForm tokenExists={props.tokenExists} handleTokenExists={props.handleTokenExists}/>
+            <Post currentIndex={currentIndex} tokenExists={tokenExists} handleTokenExists={handleTokenExists}/>
+            <CaptionForm tokenExists={tokenExists} handleTokenExists={handleTokenExists}/>
         </div>
     );
 }

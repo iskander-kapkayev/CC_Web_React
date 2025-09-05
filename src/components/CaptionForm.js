@@ -1,18 +1,12 @@
-/* caption form for handling user inputs */
+/* caption form for handling known user captions */
 
 import React from 'react';
 
 function CaptionForm(props) {
     return (
-
         <div className="form-container" id="captionform">
-            <h3>Can you make us laugh?</h3> 
-            <form id="captionFormData">
-                <input type="caption" id="caption" name="caption" placeholder="Type your caption here..." required> </input>
-                <button type="submit" value="Submit">Add Cap</button>
-            </form>
+            <h2>This is the caption form</h2>
         </div>
-        
     );
 }
 
