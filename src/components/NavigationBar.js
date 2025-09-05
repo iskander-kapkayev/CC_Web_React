@@ -11,41 +11,32 @@ function NavigationBar(props) {
 
         // signout can be called by regular user interaction or an expired token check
         sessionStorage.removeItem('usertoken'); // remove token
-        sessionStorage.removeItem('expirationTime'); // remove token timer
+        sessionStorage.removeItem('username'); // remove token timer
 
         props.handleTokenExists(false); // token removed, so doesn't exist
         props.onClick('home'); // set to home page after login!
     }
 
-    if (props.tokenExists) {
-        return (
-            <div className="header-container">
-                <h1>Iskander's Caption Contest!</h1>
-                <nav>
-                    <ul>
-                        <li onClick={() => signoutUser('regular')}>Sign Out</li>
-                        <li onClick={() => props.onClick('home')}>Captions</li>
-                        <li onClick={() => props.onClick('about')}>About Me</li>
-                        <li onClick={() => props.onClick('leader')}>Leaderboard</li>
-                    </ul>
-                </nav>
-            </div>
-        );
-    } else {
-        return (
-            <div className="header-container">
-                <h1>Iskander's Caption Contest!</h1>
-                <nav>
-                    <ul>
+    const usernameExists = sessionStorage.getItem('username');
+
+    return (
+        <div className="header-container">
+            <h1>Iskander's Caption Contest!</h1>
+            {usernameExists && <h2>Welcome back {usernameExists}</h2>}
+            <nav>
+                <ul>
+                    {props.tokenExists ? 
+                        <li onClick={() => signoutUser('regular')}>Sign Out {usernameExists}</li> : 
                         <li onClick={() => props.onClick('login')}>Login</li>
-                        <li onClick={() => props.onClick('home')}>Captions</li>
-                        <li onClick={() => props.onClick('about')}>About Me</li>
-                        <li onClick={() => props.onClick('leader')}>Leaderboard</li>
-                    </ul>
-                </nav>
-            </div>
-        );
-    }
+                    }
+                    <li onClick={() => signoutUser('regular')}>Sign Out</li>
+                    <li onClick={() => props.onClick('home')}>Captions</li>
+                    <li onClick={() => props.onClick('about')}>About Me</li>
+                    <li onClick={() => props.onClick('leader')}>Leaderboard</li>
+                </ul>
+            </nav>
+        </div>
+    );
 }
 
 export default NavigationBar;
