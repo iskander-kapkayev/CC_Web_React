@@ -22,7 +22,7 @@ function NavigationBar(props) {
     return (
         <div className="header-container">
             {usernameExists ?
-                <h1>Iskander's Caption Contest! - Welcome back {usernameExists}</h1> :
+                <h1>Iskander's Caption Contest! - Welcome back <em>{usernameExists}</em></h1> :
                 <h1>Iskander's Caption Contest!</h1>
             }
             <nav>
