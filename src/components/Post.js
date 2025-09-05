@@ -124,7 +124,7 @@ function Post(props) {
                 setLoading(true);
                 // grab username from token encryption
                 const sessionToken = sessionStorage.getItem('usertoken');
-                const sessionUsername = sessionToken.getItem('username');
+                const sessionUsername = sessionStorage.getItem('username');
                 setSessionUser(sessionUsername); // set current user
                 if (sessionToken) {
                     /* body data for grabbing user votes */
