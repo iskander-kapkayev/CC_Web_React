@@ -40,14 +40,20 @@ function Post(props) {
 
         grabCaptions();
 
-/*         const grabUserCheckToken = async () => {
+         const grabUserVotes = async () => {
             try {
                 setLoading(true);
                 // grab username from token encryption
                 const sessionToken = sessionStorage.getItem('usertoken');
-                if (sessionToken) {
-                    let body = {}; // empty body data 
-                    let URL = `${servURL}/grabusername`;
+                const sessionUsername = sessionToken.getItem('username');
+                /* if (sessionToken) {
+                    const body = {
+                        username: sessionUsername,
+                        imageid: currentIndex
+                    }; // body data
+
+                    const URL = `${servURL}/grabuservotes`;
+                    
                     let response = await fetch(URL, {
                         method: 'POST',
                         headers: {
@@ -86,9 +92,9 @@ function Post(props) {
                 setError(err);
                 console.log(err);
             }
-        };
+        }; */
 
-        grabCaptions(); */
+        grabUserVotes(); 
 
     }, [currentIndex]); // if imageid changes, re-render 
 
