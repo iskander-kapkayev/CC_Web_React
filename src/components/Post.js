@@ -9,11 +9,90 @@ function Post(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({});
+    const [userVotes, setUserVotes] = useState({});
+    const [sessionUser, setSessionUser] = useState('');
 
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
     const { tokenExists } = props;
     const { handleTokenExists } = props;
+
+    async function handleUserVote(voteType, captionText, captionUser, image) {
+
+        // set up url and body for deletion request
+        const URL = `${servURL}/votecaption`;
+        const body = {
+            captiontext: captionText, 
+            captionuser: captionUser,
+            type: voteType,
+            imageid: image
+        }; // body data  
+
+        // check for token
+        const sessionToken = sessionStorage.getItem('usertoken');
+        
+        // send body and token to server
+        if (sessionToken) {
+            
+            const response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // set body format to json
+                    'Authorization': `Bearer ${sessionToken}` // send authorization token
+                },
+                body: JSON.stringify(body)  // stringifies the data to send in the body
+            });
+
+            if (!response.ok) {
+                /* if response fails, likely because token has expired */
+                /* destroy session tokens */
+                handleTokenExists(false);
+                setSessionUser('');
+                throw new Error('Token has expired or does not exist');
+            }
+
+            const voteResponse = await response.json(); // this isn't really necessary anyway
+            console.log(`Vote by ${sessionUser} was successfully added!`);
+        }
+
+    }
+
+    async function handleDeletion(caption, image) {
+
+        // set up url and body for deletion request
+        const URL = `${servURL}/deletecaption`;
+        const body = {
+            captiontext: caption, 
+            imageid: image
+        }; // body data 
+
+        // check for token
+        const sessionToken = sessionStorage.getItem('usertoken');
+        
+        // send body and token to server
+        if (sessionToken) {
+            
+            const response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // set body format to json
+                    'Authorization': `Bearer ${sessionToken}` // send authorization token
+                },
+                body: JSON.stringify(body)  // stringifies the data to send in the body
+            });
+
+            if (!response.ok) {
+                /* if response fails, likely because token has expired */
+                /* destroy session tokens */
+                handleTokenExists(false);
+                setSessionUser('');
+                throw new Error('Token has expired or does not exist');
+            }
+
+            const deletionResponse = await response.json(); // this isn't really necessary anyway
+            console.log(`Caption successfully deleted by ${sessionUser}`);
+        }
+    }
 
     useEffect(() => {
 
@@ -46,15 +125,17 @@ function Post(props) {
                 // grab username from token encryption
                 const sessionToken = sessionStorage.getItem('usertoken');
                 const sessionUsername = sessionToken.getItem('username');
-                /* if (sessionToken) {
+                setSessionUser(sessionUsername); // set current user
+                if (sessionToken) {
+                    /* body data for grabbing user votes */
                     const body = {
                         username: sessionUsername,
                         imageid: currentIndex
-                    }; // body data
+                    }; 
 
                     const URL = `${servURL}/grabuservotes`;
                     
-                    let response = await fetch(URL, {
+                    const response = await fetch(URL, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',  // set body format to json
@@ -64,35 +145,23 @@ function Post(props) {
                     });
 
                     if (!response.ok) {
+                        /* if response fails, likely because token has expired */
+                        /* destroy session tokens */
                         handleTokenExists(false);
+                        setSessionUser('');
                         throw new Error('Token has expired or does not exist');
                     }
 
-                    let currentUser = await response.json();
-                } 
-                // now that we have the user
-                // grab the captiontext user voted for
-                body = {
-                    username: thisusername.username,
-                    imageid: currentIndex,
-                }; // body data 
-                URL = `${servURL}/grabuservotes`;
-                const thisuservotes = await postAuth(URL, body, thistoken);
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    const currentUserVotes = await response.json();
+                    setUserVotes(currentUserVotes);
+                    setLoading(false);
+                    setError(null);
                 }
-
-                const captionList = await response.json();
-
-                setCaptions(captionList);
-                setLoading(false);
-                setError(null);
             } catch (err) {
                 setError(err);
                 console.log(err);
             }
-        }; */
+        };
 
         grabUserVotes(); 
 
@@ -102,23 +171,38 @@ function Post(props) {
         <div className='image-container'>
             <h2>User Captions:</h2>
             <div className="post-container">
-                {loading ? (
-                    <h2>Captions are loading from the server...</h2>
-                ) : (
-                    Object.keys(captions).map(captionId => 
+                {loading ? 
+                    ( <h2>Captions are loading from the server...</h2>) 
+                    : (Object.keys(captions).map(captionId => 
                         (
                         <div key={captionId} className='post'>
                             <span id='captuser'>
                                 <span id='postCaption'>{captions[captionId].captiontext} </span>
                                 <span id='postUser'> - {captions[captionId].username} #{captions[captionId].category} </span>
+                                {tokenExists && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
                             </span>
+                                
                             <div id='postUpvotes'>
                                 <span className='heart'>
-                                    <a><i id='downvoteheart' className="material-symbols-outlined">remove</i></a>
+                                    <a onclick={() => handleUserVote('downvote', captions[captionId].captionText, captions[captionId].captionUser,currentIndex)}><i id={captions[captionId].username === sessionUser ?
+                                                (userVotes[captionId].type === 'downvote' ?
+                                                    'downvoteheartVOTE':
+                                                    'downvoteheart'
+                                                )
+                                                :
+                                                'downvoteheart'}
+                                    className="material-symbols-outlined">remove</i></a>
                                 </span>
                                 <span className='votenum'>{captions[captionId].votecount}</span>
                                 <span className='heart'>
-                                    <a><i id='upvoteheart' className="material-symbols-outlined">add</i></a>
+                                    <a onclick={() => handleUserVote('upvote', captions[captionId].captionText, captions[captionId].captionUser,currentIndex)}><i id={captions[captionId].username === sessionUser ?
+                                                (userVotes[captionId].type === 'upvote' ?
+                                                    'upvoteheartVOTE':
+                                                    'upvoteheart'
+                                                )
+                                                :
+                                                'upvoteheart'} 
+                                    className="material-symbols-outlined">add</i></a>
                                 </span>
                             </div>
                         </div>

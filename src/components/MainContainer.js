@@ -45,6 +45,11 @@ function MainContainer() {
 
     function handleTokenExists(exists) {
         setTokenExists(exists);
+        if (!exists) {
+            /* destroy session storages if they exist */
+            sessionStorage.removeItem('usertoken');
+            sessionStorage.removeItem('username');
+        }
     }
 
     // we will run this to check if a token exists when page is refreshed
