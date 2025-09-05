@@ -21,8 +21,10 @@ function NavigationBar(props) {
 
     return (
         <div className="header-container">
-            <h1>Iskander's Caption Contest!</h1>
-            {usernameExists && <h1><br/>Welcome back {usernameExists}<br/></h1>}
+            {usernameExists ?
+                <h1>Iskander's Caption Contest! - Welcome back {usernameExists}</h1> :
+                <h1>Iskander's Caption Contest!</h1>
+            }
             <nav>
                 <ul>
                     {props.tokenExists ? 
