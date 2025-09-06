@@ -179,7 +179,7 @@ function Post(props) {
                             <span id='captuser'>
                                 <span id='postCaption'>{captions[captionId].captiontext} </span>
                                 <span id='postUser'> - {captions[captionId].username} #{captions[captionId].category} </span>
-                                {tokenExists && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
+                                {captions[captionId].username == sessionUser && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
                             </span>
                                 
                             <div id='postUpvotes'>
