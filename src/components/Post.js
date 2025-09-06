@@ -32,29 +32,36 @@ function Post(props) {
         const sessionToken = sessionStorage.getItem('usertoken');
         
         // send body and token to server
-        if (sessionToken) {
+        try {
+            setLoading(true);
+
+            if (sessionToken) {
             
-            const response = await fetch(URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',  // set body format to json
-                    'Authorization': `Bearer ${sessionToken}` // send authorization token
-                },
-                body: JSON.stringify(body)  // stringifies the data to send in the body
-            });
+                const response = await fetch(URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',  // set body format to json
+                        'Authorization': `Bearer ${sessionToken}` // send authorization token
+                    },
+                    body: JSON.stringify(body)  // stringifies the data to send in the body
+                });
 
-            if (!response.ok) {
-                /* if response fails, likely because token has expired */
-                /* destroy session tokens */
-                handleTokenExists(false);
-                setSessionUser('');
-                throw new Error('Token has expired or does not exist');
+                if (!response.ok) {
+                    /* if response fails, likely because token has expired */
+                    /* destroy session tokens */
+                    handleTokenExists(false);
+                    setSessionUser('');
+                    throw new Error('Token has expired or does not exist');
+                }
+
+                const voteResponse = await response.json(); // this isn't really necessary anyway
+                console.log(`Vote by ${sessionUser} was successfully added!`);
             }
-
-            const voteResponse = await response.json(); // this isn't really necessary anyway
-            console.log(`Vote by ${sessionUser} was successfully added!`);
+        } catch (err) {
+            setError("Failed to apply user vote.");
+        } finally {
+            setLoading(false);
         }
-
     }
 
     async function handleDeletion(caption, image) {
@@ -70,27 +77,34 @@ function Post(props) {
         const sessionToken = sessionStorage.getItem('usertoken');
         
         // send body and token to server
-        if (sessionToken) {
-            
-            const response = await fetch(URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',  // set body format to json
-                    'Authorization': `Bearer ${sessionToken}` // send authorization token
-                },
-                body: JSON.stringify(body)  // stringifies the data to send in the body
-            });
+        try {
+            setLoading(true);
+            if (sessionToken) {
+                
+                const response = await fetch(URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',  // set body format to json
+                        'Authorization': `Bearer ${sessionToken}` // send authorization token
+                    },
+                    body: JSON.stringify(body)  // stringifies the data to send in the body
+                });
 
-            if (!response.ok) {
-                /* if response fails, likely because token has expired */
-                /* destroy session tokens */
-                handleTokenExists(false);
-                setSessionUser('');
-                throw new Error('Token has expired or does not exist');
+                if (!response.ok) {
+                    /* if response fails, likely because token has expired */
+                    /* destroy session tokens */
+                    handleTokenExists(false);
+                    setSessionUser('');
+                    throw new Error('Token has expired or does not exist');
+                }
+
+                const deletionResponse = await response.json(); // this isn't really necessary anyway
+                console.log(`Caption successfully deleted by ${sessionUser}`);
             }
-
-            const deletionResponse = await response.json(); // this isn't really necessary anyway
-            console.log(`Caption successfully deleted by ${sessionUser}`);
+        } catch (err) {
+            setError("Failed to handle deletion.");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -179,7 +193,7 @@ function Post(props) {
                             <span id='captuser'>
                                 <span id='postCaption'>{captions[captionId].captiontext} </span>
                                 <span id='postUser'> - {captions[captionId].username} #{captions[captionId].category} </span>
-                                {captions[captionId].username == sessionUser && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
+                                {captions[captionId].username === sessionUser && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
                             </span>
                                 
                             <div id='postUpvotes'>
