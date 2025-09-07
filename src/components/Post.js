@@ -127,7 +127,13 @@ function Post(props) {
 
                 const captionList = await response.json();
 
-                setCaptions(captionList);
+                Object.keys(captionList).forEach(captionId => {
+                    const updatedCaption = captionList[captionId];
+                    setCaptions(prev => ({
+                        ...prev,
+                        [captionId]: updatedCaption
+                    }));
+                });
                 setLoading(false);
                 setError(null);
             } catch (err) {
