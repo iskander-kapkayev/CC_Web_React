@@ -207,21 +207,36 @@ function Post(props) {
         <div className='image-container'>
             <h2>User Captions:</h2>
             <div className="post-container">
-                {loading ? 
-                    ( <h2>Captions are loading from the server...</h2>) 
-                    : (Object.keys(captions).map(captionId => 
+                {Object.keys(captions).length === 0 ? (
+                    <h2>Captions are loading from the server...</h2>
+                ) : (
+                    Object.keys(captions).map(captionId => {
+                    const caption = captions[captionId];
+
+                    // If caption object hasn't arrived yet, show loading for that row
+                    if (!caption) {
+                        return (
+                        <div key={captionId} className="post">
+                            <h4>Loading caption...</h4>
+                        </div>
+                        );
+                    }
+
+                    // Otherwise render the row
+                    return (
                         <CaptionRow
-                            key={captionId}
-                            captionId={captionId}
-                            caption={captions[captionId]}
-                            userVotes={userVotes}
-                            sessionUser={sessionUser}
-                            currentIndex={currentIndex}
-                            handleUserVote={handleUserVote}
-                            handleDeletion={handleDeletion}
+                        key={captionId}
+                        captionId={captionId}
+                        caption={caption}
+                        userVotes={userVotes}
+                        sessionUser={sessionUser}
+                        currentIndex={currentIndex}
+                        handleUserVote={handleUserVote}
+                        handleDeletion={handleDeletion}
                         />
-                    ))
-                }
+                    );
+                    })
+                )}
             </div>
         </div>
     );
