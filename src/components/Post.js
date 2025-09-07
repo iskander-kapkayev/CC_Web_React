@@ -202,7 +202,7 @@ function Post(props) {
                                 
                             <div id='postUpvotes'>
                                 <span className='heart'>
-                                    <a onClick={() => handleUserVote('downvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captions[captionId].username === sessionUser ?
+                                    <a onClick={() => handleUserVote('downvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={userVotes[captionId].captionid === captionId ?
                                                 (userVotes[captionId].type === 'downvote' ?
                                                     'downhighlight':
                                                     'downvoteheart'
@@ -213,7 +213,7 @@ function Post(props) {
                                 </span>
                                 <span className='votenum'>{captions[captionId].votecount}</span>
                                 <span className='heart'>
-                                    <a onClick={() => handleUserVote('upvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captions[captionId].username === sessionUser ?
+                                    <a onClick={() => handleUserVote('upvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={userVotes[captionId].captionid === captionId ?
                                                 (userVotes[captionId].type === 'upvote' ?
                                                     'uphighlight':
                                                     'upvoteheart'
