@@ -13,7 +13,6 @@ function Post(props) {
     const [userVotes, setUserVotes] = useState({});
     const [sessionUser, setSessionUser] = useState('');
     const [reRunCaptions, setReRunCaptions] = useState(0);
-    const [imageIndex, setImageIndex] = useState(null);
 
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
@@ -128,25 +127,7 @@ function Post(props) {
 
                 const captionList = await response.json();
 
-                // merge only updated captions (mostly votecounts)
-                setCaptions(prev => {
-                    // reset captions if currentIndex changed
-                    if (imageIndex !== currentIndex) {
-                        setImageIndex(currentIndex); // update the separate tracker
-                        return { ...captionList }; // reset completely
-                    }
-
-                    // otherwise merge updates (e.g., votecount)
-                    const next = { ...prev };
-                    Object.keys(captionList).forEach(captionId => {
-                    const updatedCaption = captionList[captionId];
-                    if (!next[captionId] || next[captionId].votecount !== updatedCaption.votecount) {
-                        next[captionId] = updatedCaption;
-                    }
-                    });
-                    return next;
-                });
-
+                setCaptions(captionList);
                 setLoading(false);
                 setError(null);
             } catch (err) {
@@ -212,36 +193,21 @@ function Post(props) {
         <div className='image-container'>
             <h2>User Captions:</h2>
             <div className="post-container">
-                {Object.keys(captions).length === 0 ? (
-                    <h2>Captions are loading from the server...</h2>
-                ) : (
-                    Object.keys(captions).map(captionId => {
-                    const caption = captions[captionId];
-
-                    // If caption object hasn't arrived yet, show loading for that row
-                    if (!caption) {
-                        return (
-                        <div key={captionId} className="post">
-                            <h4>Loading caption...</h4>
-                        </div>
-                        );
-                    }
-
-                    // Otherwise render the row
-                    return (
+                {loading ? 
+                    ( <h2>Captions are loading from the server...</h2>) 
+                    : (Object.keys(captions).map(captionId => 
                         <CaptionRow
-                        key={captionId}
-                        captionId={captionId}
-                        caption={caption}
-                        userVotes={userVotes}
-                        sessionUser={sessionUser}
-                        currentIndex={currentIndex}
-                        handleUserVote={handleUserVote}
-                        handleDeletion={handleDeletion}
+                            key={captionId}
+                            captionId={captionId}
+                            caption={captions[captionId]}
+                            userVotes={userVotes}
+                            sessionUser={sessionUser}
+                            currentIndex={currentIndex}
+                            handleUserVote={handleUserVote}
+                            handleDeletion={handleDeletion}
                         />
-                    );
-                    })
-                )}
+                    ))
+                }
             </div>
         </div>
     );
