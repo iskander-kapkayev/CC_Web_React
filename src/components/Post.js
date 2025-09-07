@@ -137,7 +137,7 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [currentIndex]); // if imageid or reRunCaptions changes
+    }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
 
     useEffect( () => {
         
