@@ -195,39 +195,16 @@ function Post(props) {
                 {loading ? 
                     ( <h2>Captions are loading from the server...</h2>) 
                     : (Object.keys(captions).map(captionId => 
-                        (
-                        <div key={captionId} className='post'>
-                            <span id='captuser'>
-                                <span id='postCaption'>{captions[captionId].captiontext} </span>
-                                <span id='postUser'> - {captions[captionId].username} #{captions[captionId].category} </span>
-                                {captions[captionId].username === sessionUser && <span class="deletion"> <a onclick={() => handleDeletion(captions[captionId].captiontext, currentIndex)}><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>}
-                            </span>
-                                
-                            <div id='postUpvotes'>
-                                <span className='heart'>
-                                    <a onClick={() => handleUserVote('downvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captionId in userVotes ?
-                                                (userVotes[captionId].type === 'downvote' ?
-                                                    'downhighlight':
-                                                    'downvoteheart'
-                                                )
-                                                :
-                                                'downvoteheart'}
-                                    className="material-symbols-outlined">remove</i></a>
-                                </span>
-                                <span className='votenum'>{captions[captionId].votecount}</span>
-                                <span className='heart'>
-                                    <a onClick={() => handleUserVote('upvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captionId in userVotes ?
-                                                (userVotes[captionId].type === 'upvote' ?
-                                                    'uphighlight':
-                                                    'upvoteheart'
-                                                )
-                                                :
-                                                'upvoteheart'} 
-                                    className="material-symbols-outlined">add</i></a>
-                                </span>
-                            </div>
-                        </div>
-                        )
+                        <CaptionRow
+                            key={captionId}
+                            captionId={captionId}
+                            caption={captions[captionId]}
+                            userVotes={userVotes}
+                            sessionUser={sessionUser}
+                            currentIndex={currentIndex}
+                            handleUserVote={handleUserVote}
+                            handleDeletion={handleDeletion}
+                        />
                     ))
                 }
             </div>
