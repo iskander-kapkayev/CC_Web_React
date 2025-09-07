@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
+import CaptionRow from './CaptionRow.js';
 
 /* this passes a prop called imageid from image */
 /* also passes along tokenExists and handleTokenExists() from main */
