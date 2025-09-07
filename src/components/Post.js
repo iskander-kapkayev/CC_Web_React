@@ -137,7 +137,11 @@ function Post(props) {
 
         grabCaptions();
 
-         const grabUserVotes = async () => {
+    }, [currentIndex]); // if imageid or reRunCaptions changes
+
+    useEffect( () => {
+        
+        const grabUserVotes = async () => {
             try {
                 setLoading(true);
                 // grab username from token encryption
@@ -182,8 +186,7 @@ function Post(props) {
         };
 
         grabUserVotes(); 
-
-    }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
+    }, [reRunCaptions])
 
     return (
         <div className='image-container'>
