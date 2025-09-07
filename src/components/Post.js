@@ -30,12 +30,6 @@ function Post(props) {
             sessionUser: sessionUser
         }; // body data  
 
-        console.log(captionText);
-        console.log(captionUser);
-        console.log(voteType);
-        console.log(image);
-        console.log(sessionUser);
-
         // check for token
         const sessionToken = sessionStorage.getItem('usertoken');
         
