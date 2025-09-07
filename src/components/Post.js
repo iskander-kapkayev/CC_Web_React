@@ -25,7 +25,8 @@ function Post(props) {
             captiontext: captionText, 
             captionuser: captionUser,
             type: voteType,
-            imageid: image
+            imageid: image,
+            sessionUser: sessionUser
         }; // body data  
 
         // check for token
