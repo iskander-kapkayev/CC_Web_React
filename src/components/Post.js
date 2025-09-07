@@ -129,10 +129,20 @@ function Post(props) {
 
                 // merge only updated captions (mostly votecounts)
                 setCaptions(prev => {
+                    // Case 1: currentIndex changed → reset captions completely
+                    if (!prev._currentIndex || prev._currentIndex !== currentIndex) {
+                        return {
+                            ...captionList,
+                            _currentIndex: currentIndex // internal marker for current index
+                        };
+                    }
+
+                    // Case 2: reRunCaptions triggered → merge updates only
                     const next = { ...prev };
                     Object.keys(captionList).forEach(captionId => {
                     const updatedCaption = captionList[captionId];
-                    // only replace if data actually changed
+
+                    // Only update if votecount changed (or caption is new)
                     if (
                         !next[captionId] ||
                         next[captionId].votecount !== updatedCaption.votecount
@@ -142,6 +152,7 @@ function Post(props) {
                     });
                     return next;
                 });
+
                 setLoading(false);
                 setError(null);
             } catch (err) {
