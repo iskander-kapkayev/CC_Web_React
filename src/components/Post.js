@@ -127,12 +127,20 @@ function Post(props) {
 
                 const captionList = await response.json();
 
-                Object.keys(captionList).forEach(captionId => {
+                // merge only updated captions (mostly votecounts)
+                setCaptions(prev => {
+                    const next = { ...prev };
+                    Object.keys(captionList).forEach(captionId => {
                     const updatedCaption = captionList[captionId];
-                    setCaptions(prev => ({
-                        ...prev,
-                        [captionId]: updatedCaption
-                    }));
+                    // only replace if data actually changed
+                    if (
+                        !next[captionId] ||
+                        next[captionId].votecount !== updatedCaption.votecount
+                    ) {
+                        next[captionId] = updatedCaption;
+                    }
+                    });
+                    return next;
                 });
                 setLoading(false);
                 setError(null);

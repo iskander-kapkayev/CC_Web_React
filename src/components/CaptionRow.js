@@ -58,4 +58,4 @@ function CaptionRow({ captionId, caption, userVotes, sessionUser, currentIndex, 
   );
 }
 
-export default CaptionRow;
+export default React.memo(CaptionRow);
