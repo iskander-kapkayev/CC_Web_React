@@ -5,7 +5,7 @@ import { servURL } from './FetchURL.js';
 import CaptionRow from './CaptionRow.js';
 
 /* this passes a prop called imageid from image */
-/* also passes along tokenExists and handleTokenExists() from main */
+/* also passes handleTokenExists() from main */
 function Post(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -16,7 +16,6 @@ function Post(props) {
 
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
-    const { tokenExists } = props;
     const { handleTokenExists } = props;
 
     const handleUserVote = async (voteType, captionText, captionUser, image) => {
