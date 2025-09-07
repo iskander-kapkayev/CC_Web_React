@@ -11,6 +11,7 @@ function Post(props) {
     const [captions, setCaptions] = useState({});
     const [userVotes, setUserVotes] = useState({});
     const [sessionUser, setSessionUser] = useState('');
+    const [reRunCaptions, setReRunCaptions] = useState(0);
 
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
@@ -63,6 +64,7 @@ function Post(props) {
 
                 const voteResponse = await response.json(); // this isn't really necessary anyway
                 console.log(`Vote by ${sessionUser} was successfully added!`);
+                setReRunCaptions(reRunCaptions + 1);
             }
         } catch (err) {
             setError("Failed to apply user vote.");
@@ -107,6 +109,7 @@ function Post(props) {
 
                 const deletionResponse = await response.json(); // this isn't really necessary anyway
                 console.log(`Caption successfully deleted by ${sessionUser}`);
+                setReRunCaptions(reRunCaptions + 1);
             }
         } catch (err) {
             setError("Failed to handle deletion.");
@@ -186,7 +189,7 @@ function Post(props) {
 
         grabUserVotes(); 
 
-    }, [currentIndex]); // if imageid changes, re-render 
+    }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
 
     return (
         <div className='image-container'>
@@ -207,7 +210,7 @@ function Post(props) {
                                 <span className='heart'>
                                     <a onClick={() => handleUserVote('downvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captions[captionId].username === sessionUser ?
                                                 (userVotes[captionId].type === 'downvote' ?
-                                                    'downvoteheartVOTE':
+                                                    'downhighlight':
                                                     'downvoteheart'
                                                 )
                                                 :
@@ -218,7 +221,7 @@ function Post(props) {
                                 <span className='heart'>
                                     <a onClick={() => handleUserVote('upvote', captions[captionId].captiontext, captions[captionId].username, currentIndex)}><i id={captions[captionId].username === sessionUser ?
                                                 (userVotes[captionId].type === 'upvote' ?
-                                                    'upvoteheartVOTE':
+                                                    'uphighlight':
                                                     'upvoteheart'
                                                 )
                                                 :
