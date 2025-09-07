@@ -13,6 +13,7 @@ function Post(props) {
     const [userVotes, setUserVotes] = useState({});
     const [sessionUser, setSessionUser] = useState('');
     const [reRunCaptions, setReRunCaptions] = useState(0);
+    const [imageIndex, setImageIndex] = useState(null);
 
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
@@ -129,24 +130,17 @@ function Post(props) {
 
                 // merge only updated captions (mostly votecounts)
                 setCaptions(prev => {
-                    // Case 1: currentIndex changed → reset captions completely
-                    if (!prev._currentIndex || prev._currentIndex !== currentIndex) {
-                        return {
-                            ...captionList,
-                            _currentIndex: currentIndex // internal marker for current index
-                        };
+                    // reset captions if currentIndex changed
+                    if (imageIndex !== currentIndex) {
+                        setImageIndex(currentIndex); // update the separate tracker
+                        return { ...captionList }; // reset completely
                     }
 
-                    // Case 2: reRunCaptions triggered → merge updates only
+                    // otherwise merge updates (e.g., votecount)
                     const next = { ...prev };
                     Object.keys(captionList).forEach(captionId => {
                     const updatedCaption = captionList[captionId];
-
-                    // Only update if votecount changed (or caption is new)
-                    if (
-                        !next[captionId] ||
-                        next[captionId].votecount !== updatedCaption.votecount
-                    ) {
+                    if (!next[captionId] || next[captionId].votecount !== updatedCaption.votecount) {
                         next[captionId] = updatedCaption;
                     }
                     });
