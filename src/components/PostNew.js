@@ -187,7 +187,7 @@ function PostNew(props) {
                 {loading ? 
                     ( <h2>Captions are loading from the server...</h2>) 
                     : (Object.keys(captions).map(captionId => 
-                          <CaptionRow
+                          <CaptionRowNew
                             key={captionId}
                             captionId={captionId}
                             caption={captions[captionId]}
