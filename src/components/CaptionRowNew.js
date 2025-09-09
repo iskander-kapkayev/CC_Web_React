@@ -8,7 +8,7 @@ function CaptionRowNew({
     currentIndex, handleUserVote, 
     handleDeletion }) {
   
-    const [userVote, setUserVote] = useState(initialUserVote || null);
+    const [userVote, setUserVote] = useState(initialUserVote || {type: 'none'});
     const [voteCount, setVoteCount] = useState(caption.votecount);
 
     // keep local vote state in sync if parent sends updated props
