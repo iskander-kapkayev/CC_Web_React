@@ -18,7 +18,7 @@ function CaptionRowNew({
     }, [initialUserVote, caption.votecount]);
 
     const handleVote = async (voteType) => {
-        const result = await handleUserVote(voteType, caption.captiontext, caption.username, currentIndex);
+        const result = await handleUserVote(voteType, caption.captiontext, caption.username, currentIndex, captionId);
         
         if (result) {
             // backend tells us the new state

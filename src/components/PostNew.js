@@ -18,7 +18,7 @@ function PostNew(props) {
     const { currentIndex } = props; // de-structure prop from image
     const { handleTokenExists } = props;
 
-    const handleUserVote = async (voteType, captionText, captionUser, image) => {
+    const handleUserVote = async (voteType, captionText, captionUser, image, caption) => {
 
         // set up url and body for deletion request
         const URL = `${servURL}/votecaption`;
@@ -27,7 +27,8 @@ function PostNew(props) {
             captionuser: captionUser,
             type: voteType,
             imageid: image,
-            sessionUser: sessionUser
+            sessionUser: sessionUser,
+            captionid: caption
         }; // body data  
 
         // check for token
