@@ -6,7 +6,7 @@ import CaptionRowNew from './CaptionRowNew.js';
 
 /* this passes a prop called imageid from image */
 /* also passes handleTokenExists() from main */
-function Post(props) {
+function PostNew(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [captions, setCaptions] = useState({}); // tracks captions
@@ -204,4 +204,4 @@ function Post(props) {
     );
 }
 
-export default Post;
+export default PostNew;

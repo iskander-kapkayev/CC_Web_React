@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-function CaptionRow({ 
+function CaptionRowNew({ 
     captionId, caption, 
     initialUserVote, sessionUser, 
     currentIndex, handleUserVote, 
@@ -72,4 +72,4 @@ function CaptionRow({
     );
 }
 
-export default React.memo(CaptionRow);
+export default React.memo(CaptionRowNew);
