@@ -198,6 +198,7 @@ Below styles will reflect the navigation menu
   margin-left: auto;
   margin-right: auto;
   width: 65%;
+  overflow-anchor: none;
 }
 
 .image-container button {
@@ -238,6 +239,7 @@ Below styles will reflect the caption section
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #FFFFFF;
+  overflow-anchor: none;
 }
 
 .post #captuser {

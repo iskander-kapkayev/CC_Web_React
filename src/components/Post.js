@@ -9,11 +9,11 @@ import CaptionRow from './CaptionRow.js';
 function Post(props) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [captions, setCaptions] = useState({});
-    const [userVotes, setUserVotes] = useState({});
+    const [captions, setCaptions] = useState({}); // tracks captions
+    const [userVotes, setUserVotes] = useState({}); // tracks all the user votes
     const [sessionUser, setSessionUser] = useState('');
     const [reRunCaptions, setReRunCaptions] = useState(0);
-
+    
     /* destructure from props */
     const { currentIndex } = props; // de-structure prop from image
     const { handleTokenExists } = props;
@@ -66,7 +66,7 @@ function Post(props) {
             setLoading(false);
         }
     }
-
+  
     const handleDeletion = async (caption, image) => {
 
         // set up url and body for deletion request
@@ -137,10 +137,6 @@ function Post(props) {
 
         grabCaptions();
 
-    }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
-
-    useEffect( () => {
-        
         const grabUserVotes = async () => {
             try {
                 setLoading(true);
@@ -186,7 +182,8 @@ function Post(props) {
         };
 
         grabUserVotes(); 
-    }, [reRunCaptions])
+
+    }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
 
     return (
         <div className='image-container'>
