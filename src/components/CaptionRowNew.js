@@ -8,7 +8,7 @@ function CaptionRowNew({
     currentIndex, handleUserVote, 
     handleDeletion }) {
   
-    const [userVote, setUserVote] = useState(initialUserVote || {type: 'none'});
+    const [userVote, setUserVote] = useState(initialUserVote ?? null);
     const [voteCount, setVoteCount] = useState(caption.votecount);
 
     // keep local vote state in sync if parent sends updated props
@@ -39,7 +39,7 @@ function CaptionRowNew({
                 {caption.username === sessionUser && (
                 <span className="deletion">
                     <a onClick={() => handleDeletion(caption.captiontext, currentIndex)}>
-                    <i id="deleteicon" className="material-symbols-outlined">delete</i>
+                        <i id="deleteicon" className="material-symbols-outlined">delete</i>
                     </a>
                 </span>
                 )}
@@ -49,10 +49,10 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={() => handleVote("downvote")}>
                         <i
-                            id={ userVote.type === "downvote" ? "downhighlight" : "downvoteheart" }
+                            id={ userVote === "downvote" ? "downhighlight" : "downvoteheart" }
                             className="material-symbols-outlined"
                         >
-                        remove
+                            remove
                         </i>
                     </a>
                 </span>
@@ -60,10 +60,10 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={() => handleVote("upvote")}>
                         <i
-                            id={ userVote.type === "upvote" ? "uphighlight" : "upvoteheart" }
+                            id={ userVote === "upvote" ? "uphighlight" : "upvoteheart" }
                             className="material-symbols-outlined"
                         >
-                        add
+                            add
                         </i>
                     </a>
                 </span>

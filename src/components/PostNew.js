@@ -191,7 +191,7 @@ function PostNew(props) {
                             key={captionId}
                             captionId={captionId}
                             caption={captions[captionId]}
-                            initialUserVote={userVotes[captionId]}   // just this caption's vote
+                            initialUserVote={userVotes[captionId]?.type}   // just this caption's vote
                             sessionUser={sessionUser}
                             currentIndex={currentIndex}
                             handleUserVote={handleUserVote}
