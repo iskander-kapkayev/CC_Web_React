@@ -1,6 +1,6 @@
 /* this component will render each row of captions independently */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CaptionRowNew({ 
     captionId, caption, 
