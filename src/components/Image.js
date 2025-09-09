@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
-import Post from './Post';
+import PostNew from './PostNew';
 import CaptionForm from './CaptionForm';
 
 function Image(props) {
