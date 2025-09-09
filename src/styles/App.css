@@ -198,7 +198,7 @@ Below styles will reflect the navigation menu
   margin-left: auto;
   margin-right: auto;
   width: 65%;
-  overflow-anchor: none;
+  min-height: 300px;
 }
 
 .image-container button {
