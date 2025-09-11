@@ -55,7 +55,7 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={sessionUser ? () => handleVote("downvote") : undefined}>
                         <i
-                            id={ sessionUser ? userVote === "downvote" ? "downhighlight" : "downvoteheart" }
+                            id={ sessionUser ? userVote === "downvote" ? "downhighlight" : "downvoteheart" : "downvoteheart" }
                             className="material-symbols-outlined"
                         >
                             remove
@@ -66,7 +66,7 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={sessionUser ? () => handleVote("upvote") : undefined}>
                         <i
-                            id={ sessionUser ? userVote === "upvote" ? "uphighlight" : "upvoteheart" }
+                            id={ sessionUser ? userVote === "upvote" ? "uphighlight" : "upvoteheart" : "downvoteheart" }
                             className="material-symbols-outlined"
                         >
                             add

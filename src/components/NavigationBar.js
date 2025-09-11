@@ -15,6 +15,7 @@ function NavigationBar(props) {
 
         props.handleTokenExists(false); // token removed, so doesn't exist
         props.onClick('home'); // set to home page after login!
+        window.location.reload(); // refresh entire page to reset colors
     }
 
     const usernameExists = sessionStorage.getItem('username');
