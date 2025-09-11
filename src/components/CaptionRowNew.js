@@ -25,10 +25,10 @@ function CaptionRowNew({
         
         if (result) {
             // backend tells us the new state
-            console.log(result.newVoteCount);
-            console.log(result.newUserVote);
+            console.log(result.newvotecount);
+            console.log(result.newuservote);
             setVoteCount(Number(result.newVoteCount));
-            setUserVote(result.newUserVote);
+            setUserVote(result.newuservote);
         } else {
             // fallback optimistic update
             // but should only be if user is logged in
