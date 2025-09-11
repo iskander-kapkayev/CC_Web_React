@@ -26,7 +26,9 @@ function CaptionRowNew({
         if (result) {
             // backend tells us the new state
             setVoteCount(Number(result.newvotecount));
-            setUserVote(result.newuservote);
+            // ensure color doesn't change if a vote is removed by user
+            (result.newuservote === 'removed') ? setUserVote(null) : setUserVote(result.newuservote);
+             
         } else {
             // fallback optimistic update
             // but should only be if user is logged in

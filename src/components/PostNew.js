@@ -98,14 +98,14 @@ function PostNew(props) {
                     throw new Error('Token has expired or does not exist');
                 }
 
-                const deletionResponse = await response.json(); // this isn't really necessary anyway
+                const deletionResponse = await response.json(); // not used right now
                 console.log(`Caption successfully deleted by ${sessionUser}`);
-                setReRunCaptions(reRunCaptions + 1);
             }
         } catch (err) {
             setError("Failed to handle deletion.");
         } finally {
             setLoading(false);
+            window.location.reload(); // refresh entire page to reset colors
         }
     }
 
