@@ -191,7 +191,10 @@ function PostNew(props) {
                           <CaptionRowNew
                             key={captionId}
                             captionId={captionId}
-                            caption={captions[captionId]}
+                            captionText={captions[captionId]?.captiontext}
+                            captionUsername={captions[captionId]?.username}
+                            captionVoteCount={captions[captionId]?.votecount}
+                            captionCategory={captions[captionId]?.category}
                             initialUserVote={userVotes[captionId]?.type}   // just this caption's vote
                             sessionUser={sessionUser}
                             currentIndex={currentIndex}

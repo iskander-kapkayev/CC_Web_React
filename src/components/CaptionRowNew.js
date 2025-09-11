@@ -3,42 +3,47 @@
 import React, { useState, useEffect } from 'react';
 
 function CaptionRowNew({ 
-    captionId, caption, 
-    initialUserVote, sessionUser, 
-    currentIndex, handleUserVote, 
-    handleDeletion }) {
+    captionId, captionText, captionUsername, 
+    captionVoteCount, captionCategory, initialUserVote, sessionUser, 
+    currentIndex, handleUserVote, handleDeletion }) {
   
-    const [userVote, setUserVote] = useState(initialUserVote ?? null);
-    const [voteCount, setVoteCount] = useState(caption.votecount);
+    const [userVote, setUserVote] = useState(initialUserVote ?? null); //user may not have voted
+    const [text, setText] = useState(captionText);
+    const [username, setUsername] = useState(captionUsername);
+    const [voteCount, setVoteCount] = useState(captionVoteCount);
+    const [category, setCategory] = useState(captionCategory);
 
     // keep local vote state in sync if parent sends updated props
     useEffect(() => {
         setUserVote(initialUserVote || null);
-        setVoteCount(caption.votecount);
-    }, [initialUserVote, caption.votecount]);
+        setVoteCount(captionVoteCount);
+    }, [initialUserVote, captionVoteCount]);
 
     const handleVote = async (voteType) => {
-        const result = await handleUserVote(voteType, caption.captiontext, caption.username, currentIndex, captionId);
+        const result = await handleUserVote(voteType, text, username, currentIndex, captionId);
         
         if (result) {
             // backend tells us the new state
             setVoteCount(result.newVoteCount);
             setUserVote(result.newUserVote);
         } else {
-        // fallback optimistic update
-            setUserVote(voteType);
-            setVoteCount(prev => voteType === 'upvote' ? prev + 1 : prev - 1);
+            // fallback optimistic update
+            // but should only be if user is logged in
+            if (sessionUser) {
+                setUserVote(voteType);
+                setVoteCount(prev => voteType === 'upvote' ? prev + 1 : prev - 1);
+            }
         }
     };
   
     return (
         <div className="post">
             <span id="captuser">
-                <span id="postCaption">{caption.captiontext} </span>
-                <span id="postUser"> - {caption.username} #{caption.category} </span>
-                {caption.username === sessionUser && (
+                <span id="postCaption">{text} </span>
+                <span id="postUser"> - {username} #{category} </span>
+                {username === sessionUser && (
                 <span className="deletion">
-                    <a onClick={() => handleDeletion(caption.captiontext, currentIndex)}>
+                    <a onClick={() => handleDeletion(text, currentIndex)}>
                         <i id="deleteicon" className="material-symbols-outlined">delete</i>
                     </a>
                 </span>
@@ -56,7 +61,7 @@ function CaptionRowNew({
                         </i>
                     </a>
                 </span>
-                <span className="votenum">{caption.votecount}</span>
+                <span className="votenum">{voteCount}</span>
                 <span className="heart">
                     <a onClick={() => handleVote("upvote")}>
                         <i
