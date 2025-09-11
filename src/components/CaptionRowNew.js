@@ -32,7 +32,7 @@ function CaptionRowNew({
             // but should only be if user is logged in
             if (sessionUser) {
                 setUserVote(voteType);
-                setVoteCount(prev => voteType === 'upvote' ? prev + 1 : prev - 1);
+                setVoteCount(voteCount => voteType === 'upvote' ? voteCount + 1 : voteCount - 1);
             }
         }
     };
@@ -55,7 +55,7 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={sessionUser ? () => handleVote("downvote") : undefined}>
                         <i
-                            id={ userVote === "downvote" ? "downhighlight" : "downvoteheart" }
+                            id={ sessionUser ? userVote === "downvote" ? "downhighlight" : "downvoteheart" }
                             className="material-symbols-outlined"
                         >
                             remove
@@ -66,7 +66,7 @@ function CaptionRowNew({
                 <span className="heart">
                     <a onClick={sessionUser ? () => handleVote("upvote") : undefined}>
                         <i
-                            id={ userVote === "upvote" ? "uphighlight" : "upvoteheart" }
+                            id={ sessionUser ? userVote === "upvote" ? "uphighlight" : "upvoteheart" }
                             className="material-symbols-outlined"
                         >
                             add
