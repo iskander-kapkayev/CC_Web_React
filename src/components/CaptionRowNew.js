@@ -7,8 +7,9 @@ function CaptionRowNew({
     captionVoteCount, captionCategory, initialUserVote, sessionUser, 
     currentIndex, handleUserVote, handleDeletion }) {
   
-    const [userVote, setUserVote] = useState(initialUserVote ?? null); //user may not have voted
-    const [text, setText] = useState(captionText);
+    const [userVote, setUserVote] = useState(initialUserVote ?? null); // user may not have voted
+    /* set initial state from caption */
+    const [text, setText] = useState(captionText); 
     const [username, setUsername] = useState(captionUsername);
     const [voteCount, setVoteCount] = useState(captionVoteCount);
     const [category, setCategory] = useState(captionCategory);
@@ -52,7 +53,7 @@ function CaptionRowNew({
 
             <div id="postUpvotes">
                 <span className="heart">
-                    <a onClick={() => handleVote("downvote")}>
+                    <a onClick={sessionUser ? () => handleVote("downvote") : undefined}>
                         <i
                             id={ userVote === "downvote" ? "downhighlight" : "downvoteheart" }
                             className="material-symbols-outlined"
@@ -63,7 +64,7 @@ function CaptionRowNew({
                 </span>
                 <span className="votenum">{voteCount}</span>
                 <span className="heart">
-                    <a onClick={() => handleVote("upvote")}>
+                    <a onClick={sessionUser ? () => handleVote("upvote") : undefined}>
                         <i
                             id={ userVote === "upvote" ? "uphighlight" : "upvoteheart" }
                             className="material-symbols-outlined"
