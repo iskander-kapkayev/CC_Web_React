@@ -25,7 +25,7 @@ function CaptionRowNew({
         
         if (result) {
             // backend tells us the new state
-            setVoteCount(result.newVoteCount);
+            setVoteCount(Number(result.newVoteCount));
             setUserVote(result.newUserVote);
         } else {
             // fallback optimistic update
