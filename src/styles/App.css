@@ -369,7 +369,8 @@ below starts styling for the sign up page
 
 .form-container {
   width: 360px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-container h2 {
