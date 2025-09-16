@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 function CaptionForm(props) {
-    const [showCaptionForm, setShowCaptionForm] = useState(false); // do not auto show caption form
+    const [showCaptionForm, setShowCaptionForm] = useState(tokenExists); // do not auto show caption form
     const [text, setText] = useState(''); // empty text to start
     const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(false); // set loading to false
@@ -13,10 +13,13 @@ function CaptionForm(props) {
     // checks user status and updates if necessary
     const { tokenExists } = props;
     const { handleTokenExists } = props;
+    const { currentIndex } = props;
 
     /* show/unshow caption form */
     function handleClick() {
-        (showCaptionForm) ? setShowCaptionForm(false) : setShowCaptionForm(true);
+        if (tokenExists) {
+            (showCaptionForm) ? setShowCaptionForm(false) : setShowCaptionForm(true);
+        }
     }
 
     /* shows change in caption as user types */
@@ -31,15 +34,43 @@ function CaptionForm(props) {
         setError(null);
         setSuccess(false);
 
-        try {
-            // change this to match the function to update captions
-            if (await signUpRegister(username, email, password)) {
-                setSuccess(true); // submission was successful!
+        // check for token
+        const sessionToken = sessionStorage.getItem('usertoken');
+        const sessionUsername = sessionStorage.getItem('username');
+        if (!sessionToken || !sessionUsername) return null;
 
-            } else {
-                throw new Error('Registration submission failed');
+        // set up url and body for post request
+        const URL = `${servURL}/addnewcaption`;
+        const body = {
+            captiontext: text, 
+            imageid: currentIndex,
+            sessionUsername: sessionUsername
+        }; // body data 
+
+        try {   
+            
+            const response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // set body format to json
+                    'Authorization': `Bearer ${sessionToken}` // send authorization token
+                },
+                body: JSON.stringify(body)  // stringifies the data to send in the body
+            });
+
+            if (!response.ok) {
+                /* if response fails, likely because token has expired */
+                /* destroy session tokens */
+                handleTokenExists(false);
+                setSessionUser('');
+                throw new Error('Token has expired or does not exist');
             }
 
+            const addedCaption = await response.json(); // this isn't really necessary anyway
+            setText(''); // empty text string
+            setShowCaptionForm(false); // remove caption form
+            setSuccess(true);
+            window.location.reload(); // refresh entire page to reset colors
         } catch (err) {
             setError(err.message);
         } finally {

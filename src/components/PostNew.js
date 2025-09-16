@@ -100,12 +100,12 @@ function PostNew(props) {
 
                 const deletionResponse = await response.json(); // not used right now
                 console.log(`Caption successfully deleted by ${sessionUser}`);
+                window.location.reload(); // refresh entire page to reset colors
             }
         } catch (err) {
             setError("Failed to handle deletion.");
         } finally {
             setLoading(false);
-            window.location.reload(); // refresh entire page to reset colors
         }
     }
 

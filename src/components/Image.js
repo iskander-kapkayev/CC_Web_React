@@ -116,7 +116,7 @@ function Image(props) {
             </span>
 
             <PostNew currentIndex={currentIndex} handleTokenExists={handleTokenExists}/>
-            <CaptionForm tokenExists={tokenExists} handleTokenExists={handleTokenExists}/>
+            <CaptionForm tokenExists={tokenExists} handleTokenExists={handleTokenExists} currentIndex={currentIndex}/>
         </div>
     );
 }
