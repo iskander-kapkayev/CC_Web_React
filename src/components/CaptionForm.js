@@ -85,7 +85,7 @@ function CaptionForm(props) {
                 :
                 <div>
                     <h2>CAPTION</h2>
-                    <form id="loginFormData" onSubmit={submitNewCaption}>
+                    <form onSubmit={submitNewCaption}>
                         <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
                         <button type="submit" value="SUBMIT">SUBMIT</button>
                     </form>
