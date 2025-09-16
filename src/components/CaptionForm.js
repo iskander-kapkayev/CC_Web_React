@@ -78,16 +78,13 @@ function CaptionForm(props) {
         }
     };
 
-    console.log(showCaptionForm);
-
     return (
-        <div className="form-container">
+        <div className="caption-form">
             {!showCaptionForm ?
-                <h2 onClick={() => handleClick()}>Click on me to leave a caption</h2>
+                <h2 id="caption-form-link" onClick={() => handleClick()}>Click on me to leave a caption</h2>
                 :
                 <div>
                     <h2>CAPTION</h2>
-                    <h2></h2>
                     <form id="loginFormData" onSubmit={submitNewCaption}>
                         <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
                         <button type="submit" value="SUBMIT">SUBMIT</button>
