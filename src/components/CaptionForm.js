@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 function CaptionForm(props) {
-    const [showCaptionForm, setShowCaptionForm] = useState(tokenExists); // do not auto show caption form
+    const [showCaptionForm, setShowCaptionForm] = useState(false); // do not auto show caption form
     const [text, setText] = useState(''); // empty text to start
     const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(false); // set loading to false
@@ -78,15 +78,20 @@ function CaptionForm(props) {
         }
     };
 
+    console.log(showCaptionForm);
+
     return (
         <div className="form-container">
             {showCaptionForm ?
                 <h2 onClick={() => handleClick()}>Click on me to leave a caption</h2>
                 :
-                <form id="nothing" onSubmit={submitNewCaption}>
-                    <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
-                    <button type="submit" value="SUBMIT">SUBMIT</button>
-                </form>
+                <div>
+                    <h2>Please enter your caption below!</h2>
+                    <form id="nothing" onSubmit={submitNewCaption}>
+                        <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
+                        <button type="submit" value="SUBMIT">SUBMIT</button>
+                    </form>
+                </div>
             }
         </div>
     );
