@@ -82,11 +82,11 @@ function CaptionForm(props) {
 
     return (
         <div className="form-container">
-            {showCaptionForm ?
+            {!showCaptionForm ?
                 <h2 onClick={() => handleClick()}>Click on me to leave a caption</h2>
                 :
                 <div>
-                    <h2>Please enter your caption below!</h2>
+                    <label htmlFor="text">Please enter your caption below:</label>
                     <form id="nothing" onSubmit={submitNewCaption}>
                         <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
                         <button type="submit" value="SUBMIT">SUBMIT</button>
