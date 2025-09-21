@@ -6,8 +6,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { servURL } from './FetchURL.js';
-import PostNew from './PostNew';
-import CaptionForm from './CaptionForm';
+import PostNew from './PostNew.js';
+import CaptionForm from './CaptionForm.js';
 
 function Image(props) {
     const [images, setImages] = useState({}); // will grab from server every time

@@ -1,6 +1,7 @@
 /* caption form for handling known user captions */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { servURL } from './FetchURL.js';
 
 function CaptionForm(props) {
     const [showCaptionForm, setShowCaptionForm] = useState(false); // do not auto show caption form

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import NavigationBar from './NavigationBar';
-import Image from './Image';
-import AboutMe from './AboutMe';
-import Leaderboard from './Leaderboard';
-import UserFormControl from './UserFormControl';
+import NavigationBar from './NavigationBar.js';
+import Image from './Image.js';
+import AboutMe from './AboutMe.js';
+import Leaderboard from './Leaderboard.js';
+import UserFormControl from './UserFormControl.js';
 
 
 /* the main container will display whatever the currentView is */
