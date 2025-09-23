@@ -88,7 +88,12 @@ function CaptionForm(props) {
                     <div id="caption-form-box-border">
                         <h2>CAPTION</h2>
                         <form onSubmit={submitNewCaption}>
-                            <input type="text" id="text" value={text} placeholder="type your caption here..." onChange={handleText} required/>
+                            <textarea
+                                rows={4}
+                                placeholder="Enter your caption..."
+                                value={caption}
+                                onChange={handleChange}
+                            />
                             <button type="submit" value="SUBMIT">SUBMIT</button>
                         </form>
                     </div>
