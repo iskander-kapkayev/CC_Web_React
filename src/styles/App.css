@@ -473,7 +473,7 @@ below starts styling for forms
 }
 
 .caption-form form button {
-  background: #10a37f;
+  background: #33a741;
   border: none;
   color: white;
   font-weight: 600;
@@ -489,7 +489,7 @@ below starts styling for forms
 }
 
 .caption-form form button:hover {
-  background: #0e8c68;
+  background: #32a889;
   box-shadow: 0 6px 16px rgba(14,140,104,0.6);
 }
 
