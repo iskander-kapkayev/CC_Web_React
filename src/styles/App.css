@@ -425,6 +425,7 @@ below starts styling for forms
 }
 
 .caption-form {
+  width: 65%;
   margin: 40px auto;
   font-family: Lato, sans-serif;
   background: #fff;
