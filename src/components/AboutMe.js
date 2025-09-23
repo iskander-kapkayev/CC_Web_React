@@ -13,16 +13,13 @@ function AboutMe() {
                     This is a free to use caption contest!<br/>
                     Feel free to share the link with others.<br/><br/>
                     In order to participate:<br/>
-                </p>
-                
-                <ol id="aboutmetext">
-                    <li>Register and make an account.</li>
-                    <li>Leave a caption on any image.</li>
-                    <li>Vote for your favorite captions!</li>
-                    <li><strong>Try to get the most likes!</strong></li>
-                </ol>
+                        1. Register and make an account.<br/>
+                        2. Leave a caption on any image.<br/>
+                        3. Vote for your favorite captions!<br/>
+                        4. <strong>Try to get the most likes!</strong><br/>
 
-                <p id="aboutmetext">**All images are borrowed!**</p>
+                    **All images are borrowed!**
+                </p>
             </div>
             
             <div className="contactcontainer">
