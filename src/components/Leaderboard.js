@@ -2,7 +2,13 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { servURL } from './FetchURL.js';
-import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender } from '@tanstack/react-table';
+import { 
+    useReactTable, 
+    getCoreRowModel, 
+    getSortedRowModel, 
+    getFilteredRowModel,
+    flexRender 
+} from '@tanstack/react-table';
 
 function Leaderboard() {
     const [error, setError] = useState(null); // set null error
