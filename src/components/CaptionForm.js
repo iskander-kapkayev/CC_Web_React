@@ -91,8 +91,8 @@ function CaptionForm(props) {
                             <textarea
                                 rows={4}
                                 placeholder="Enter your caption..."
-                                value={caption}
-                                onChange={handleChange}
+                                value={text}
+                                onChange={handleText}
                             />
                             <button type="submit" value="SUBMIT">SUBMIT</button>
                         </form>
