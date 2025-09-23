@@ -452,7 +452,7 @@ below starts styling for forms
 
 .caption-form form input {
   flex-grow: 1;
-  padding: 14px 16px;
+  padding: 2px 3px;
   font-size: 1rem;
   border-radius: 9999px; /* pill shape */
   border: 1.5px solid #ddd;
