@@ -431,7 +431,7 @@ below starts styling for forms
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 30px rgba(100, 100, 100, 0.15);
-  padding: 24px 24px 16px;
+  padding: 5px 5px 5px 15px;
   display: flex;
   flex-direction: column;
   gap: 16px;
