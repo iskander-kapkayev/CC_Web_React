@@ -1,6 +1,6 @@
 /* this component will handle the Leaderboard display */
 
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { servURL } from './FetchURL.js';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 
@@ -25,15 +25,16 @@ function Leaderboard() {
                 }
 
                 const leaderData = await response.json();
-                const leaderDataArray = Object.values(leaderData).map(value => value); // array of the values
+                const leaderList = Object.values(leaderData); // array of the values
 
-                setLeaders(leaderDataArray);
-                setLoading(false);
+                setLeaders(leaderList);
                 setError(null);
             } catch (err) {
                 setError(err);
                 console.log(err);
                 /* setRetry(prev => prev + 1); */
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -71,7 +72,16 @@ function Leaderboard() {
 
             </div>
         );
-    } 
+    }
+
+    if (error) {
+        return (
+            <div className="leaderboard">
+                <h2>Leaderboard:</h2>
+                <p>Error loading leaderboard: {error.message}</p>
+            </div>
+        );
+    }
     
     return (
         <div className="leaderboard">
