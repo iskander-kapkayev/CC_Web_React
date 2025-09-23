@@ -105,10 +105,10 @@ function Leaderboard() {
 
             <h2>Leaderboard:</h2>
 
-                <div className="search-bar">
+                <div className="search-bar" style={{ marginBottom: '13.28px' }}>
                     <input
                         type="text"
-                        placeholder="Search username..."
+                        placeholder="Type in username..."
                         value={globalFilter}
                         onChange={(e) => setGlobalFilter(e.target.value)}
                     />
