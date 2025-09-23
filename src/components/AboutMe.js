@@ -15,7 +15,7 @@ function AboutMe() {
                     In order to participate:<br/>
                 </p>
                 
-                <ol>
+                <ol id="aboutmetext">
                     <li>Register and make an account.</li>
                     <li>Leave a caption on any image.</li>
                     <li>Vote for your favorite captions!</li>
