@@ -57,6 +57,10 @@ h2 {
   width: 480px;
 }
 
+.search-bar {
+    margin-bottom: 13.28px;
+}
+
 .contactcontainer {
   margin-top: 10px;
   text-align: center;
@@ -422,61 +426,79 @@ below starts styling for forms
 
 .caption-form {
   width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.caption-form #caption-form-link {
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.caption-form #caption-form-link:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#caption-form-box-border {
-  box-shadow: #e6e6e6;
+  margin: 40px auto; /* more breathing room top & bottom */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* modern font */
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* subtle shadow for depth */
+  background: #fff; /* white background outside the form */
+  padding: 20px;
 }
 
 .caption-form h2 {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+/* Remove id-based styles for better reusability */
+/* If you want #caption-form-link styles, put inside caption-form */
+.caption-form a#caption-form-link {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.caption-form a#caption-form-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #0056b3;
 }
 
 .caption-form form {
-  position: relative;
   background: #81D8D0;
-  max-width: 360px;
-  margin: 0 auto 0;
-  padding: 45px;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
 }
 
 .caption-form form input {
-  outline: 0;
-  background: #e6e6e6;
+  outline: none;
+  background: #f0f0f0;
   width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
+  border: 1.5px solid transparent;
+  margin-bottom: 18px;
+  padding: 14px 18px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.caption-form form input:focus {
+  border-color: #33a741;
+  background: #e9f7ef;
 }
 
 .caption-form form button {
-  outline: 0;
+  outline: none;
   background: #33a741;
   width: 100%;
-  border: 0;
-  padding: 15px;
+  border: none;
+  padding: 16px 0;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
 .caption-form form button:hover {
-  background-color: #32a889;
+  background-color: #28a62a;
   cursor: pointer;
 }
 
