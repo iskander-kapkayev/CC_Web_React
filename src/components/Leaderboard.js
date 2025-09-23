@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { servURL } from './FetchURL.js';
-import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
+import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender } from '@tanstack/react-table';
 
 function Leaderboard() {
     const [error, setError] = useState(null); // set null error
     const [loading, setLoading] = useState(false); // set loading to null
     const [leaders, setLeaders] = useState([]); // set empty leaderboard
+    const [sorting, setSorting] = useState([{ id: 'votecount', desc: true }]); // for sorting
     /* const [retry, setRetry] = useState(0); */
 
     // try to grab the leaderboard
@@ -60,7 +61,12 @@ function Leaderboard() {
     const table = useReactTable({
         data: leaders,
         columns,
+        state: {
+            sorting,
+        },
+        onSortingChange: setSorting,
         getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
     });
 
     if (loading) {
@@ -93,11 +99,18 @@ function Leaderboard() {
                         {table.getHeaderGroups().map(headerGroup => (
                             <tr key={headerGroup.id}>
                                 {headerGroup.headers.map(header => (
-                                    <th key={header.id}>
+                                    <th key={header.id}
+                                        onClick={header.column.getToggleSortingHandler()}
+                                        style={{ cursor: 'pointer' }}
+                                    >
                                         {flexRender(
                                             header.column.columnDef.header,
                                             header.getContext()
                                         )}
+                                        {{
+                                            asc: ' 🔼',
+                                            desc: ' 🔽',
+                                        }[header.column.getIsSorted()] ?? null}
                                     </th>
                                 ))}
                             </tr>
