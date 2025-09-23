@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect} from 'react';
 import { servURL } from './FetchURL.js';
+import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 
 function Leaderboard() {
     const [error, setError] = useState(null); // set null error
@@ -40,7 +41,26 @@ function Leaderboard() {
 
     }, []);
 
-    console.log(leaders);
+    const columns = useMemo(() => [
+        {
+            accessorKey: 'username',
+            header: 'Username',
+        },
+        {
+            accessorKey: 'votecount',
+            header: 'Aura',
+        },
+        {
+            accessorKey: 'category',
+            header: 'Power Level',
+        },
+    ], []);
+
+    const table = useReactTable({
+        data: leaders,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+    });
 
     if (loading) {
         return (
@@ -60,19 +80,29 @@ function Leaderboard() {
 
                 <table id="leaderdisplay">
                     <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Aura</th>
-                            <th>Power Level</th>
-                        </tr>
+                        {table.getHeaderGroups().map(headerGroup => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map(header => (
+                                    <th key={header.id}>
+                                        {flexRender(
+                                            header.column.columnDef.header,
+                                            header.getContext()
+                                        )}
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
                     </thead>
+
                     <tbody>
-                        {leaders.map( user => (
-                        <tr key={user.username}>
-                            <td>{user.username}</td>
-                            <td>{user.votecount}</td>
-                            <td>{user.category}</td>
-                        </tr>
+                        {table.getRowModel().rows.map(row => (
+                            <tr key={row.id}>
+                                {row.getVisibleCells().map(cell => (
+                                    <td key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>
+                                ))}
+                            </tr>
                         ))}
                     </tbody>
                 </table>
