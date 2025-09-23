@@ -9,6 +9,7 @@ function Leaderboard() {
     const [loading, setLoading] = useState(false); // set loading to null
     const [leaders, setLeaders] = useState([]); // set empty leaderboard
     const [sorting, setSorting] = useState([{ id: 'votecount', desc: true }]); // for sorting
+    const [globalFilter, setGlobalFilter] = useState('');
     /* const [retry, setRetry] = useState(0); */
 
     // try to grab the leaderboard
@@ -63,10 +64,14 @@ function Leaderboard() {
         columns,
         state: {
             sorting,
+            globalFilter,
         },
         onSortingChange: setSorting,
+        onGlobalFilterChange: setGlobalFilter,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        globalFilterFn: 'includesString',
     });
 
     if (loading) {
@@ -93,6 +98,15 @@ function Leaderboard() {
         <div className="leaderboard">
 
             <h2>Leaderboard:</h2>
+
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search username..."
+                        value={globalFilter}
+                        onChange={(e) => setGlobalFilter(e.target.value)}
+                    />
+                </div>
 
                 <table id="leaderdisplay">
                     <thead>
