@@ -21,7 +21,7 @@ function AboutMe() {
                 </p>
             </div>
             
-            <div className="contactcontainer">
+            <div className="aboutmecontainer">
 
                 <p>
                     In order to contact me, you can email me at:<br/>
