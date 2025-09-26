@@ -99,17 +99,17 @@ function Image(props) {
         <div className='image-container'>
             
             <span>
-                <h2>Naruto: {imageButtons.map((label, index) => (
+                <h2>Naruto:    {imageButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label)}>
                         {label}
                     </button>
                 ))} </h2>
 
-                <h2>One Piece: </h2> {imageButtons.map((label, index) => (
+                <h2>One Piece:  {imageButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label)}>
                         {label}
                     </button>
-                ))}
+                ))} </h2>
 
                 <br/>
                 <br/>
