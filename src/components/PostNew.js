@@ -181,6 +181,21 @@ function PostNew(props) {
 
     }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
 
+    /* if captions are empty... */
+    if (!captions) {
+        return (
+            <div className='image-container'>
+                <h2>User Captions:</h2>
+                <div className="post-container">
+                    <p>
+                        Nothing to see here!
+                        Be the first to post a caption.
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className='image-container'>
             <h2>User Captions:</h2>
