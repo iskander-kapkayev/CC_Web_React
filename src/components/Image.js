@@ -57,7 +57,7 @@ function Image(props) {
                 }
             }
 
-            return arrayOfButtons(buttonIndex);
+            return arrayOfButtons[buttonIndex];
         };
 
         /* find category of currentIndex */
