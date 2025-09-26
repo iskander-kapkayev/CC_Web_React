@@ -61,21 +61,22 @@ function Image(props) {
         };
 
         /* find category of currentIndex */
+        let buttonValues = [];
         switch (currentCategory) {
             case 'naruto':
-                const buttonValues = [1, 2, 3, 28, 29, 30, 31];
+                buttonValues = [1, 2, 3, 28, 29, 30, 31];
                 break;
             case 'one piece':
-                const buttonValues = [32, 33, 34, 35, 36, 37, 38];
+                buttonValues = [32, 33, 34, 35, 36, 37, 38];
                 break;
             case 'dbz':
-                const buttonValues = [13, 14, 15, 16, 24, 25, 26];
+                buttonValues = [13, 14, 15, 16, 24, 25, 26];
                 break;
             case 'misc':
-                const buttonValues = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
+                buttonValues = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
                 break;
             case 'sports':
-                const buttonValues = [17, 18, 19, 20, 21, 22, 23];
+                buttonValues = [17, 18, 19, 20, 21, 22, 23];
                 break;
             }
 
