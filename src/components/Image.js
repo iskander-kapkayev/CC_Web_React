@@ -92,26 +92,45 @@ function Image(props) {
     const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
     const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
     const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
-    const basketballButtons = [17, 18, 19, 20, 21, 22, 23];
+    const sportsButtons = [17, 18, 19, 20, 21, 22, 23];
 
 
     return (
         <div className='image-container'>
             
             <span>
-                <h2>Naruto:&nbsp;&nbsp;&nbsp;&nbsp;{imageButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
-                        {label}
-                    </button>
-                ))} </h2>
-
-                <h2>One Piece:&nbsp;&nbsp;{imageButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
-                        {label}
-                    </button>
-                ))} </h2>
-
+                <h2>Image Directory</h2>
                 <br/>
+                <h2>One Piece:&nbsp;&nbsp;&nbsp;&nbsp;{onepieceButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {index+1}
+                    </button>
+                ))} </h2>
+
+                <h2>Dragonball:&nbsp;&nbsp;{dbzButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {index+1}
+                    </button>
+                ))} </h2>
+
+                <h2>Naruto:&nbsp;&nbsp;{narutoButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {index+1}
+                    </button>
+                ))} </h2>
+
+                <h2>Sports:&nbsp;&nbsp;{sportsButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {index+1}
+                    </button>
+                ))} </h2>
+
+                <h2>Random:&nbsp;&nbsp;{miscButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {index+1}
+                    </button>
+                ))} </h2>                
+
                 <br/>
             </span>
 
@@ -121,12 +140,12 @@ function Image(props) {
                 <img id="myImage" alt={currentsrc} src={currentsrc}/>
             )}
 
-            <span>
+            {/* <span>
                 <br/>
                 <button onClick={previousImageSelection}>Prev Image</button>
                 <button onClick={nextImageSelection}>Next Image</button>
                 <br/>
-            </span>
+            </span> */}
 
             <PostNew currentIndex={currentIndex} handleTokenExists={handleTokenExists}/>
             <CaptionForm tokenExists={tokenExists} handleTokenExists={handleTokenExists} currentIndex={currentIndex}/>
