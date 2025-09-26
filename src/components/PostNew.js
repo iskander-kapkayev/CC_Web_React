@@ -182,7 +182,7 @@ function PostNew(props) {
     }, [currentIndex, reRunCaptions]); // if imageid or reRunCaptions changes
 
     /* if captions are empty... */
-    if (!captions) {
+    if (Object.keys(captions).length === 0) {
         return (
             <div className='image-container'>
                 <h2>User Captions:</h2>
