@@ -20,7 +20,7 @@ function Image(props) {
     
     /* to handle image changes */
     const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
-    const [currentCategory, setCurrentCategory] = useState('naruto');
+    const [currentCategory, setCurrentCategory] = useState('naruto'); // set original category to naruto
 
     // destructure from props
     const { tokenExists } = props;
@@ -39,13 +39,13 @@ function Image(props) {
         /* this function used to calculate the prev or next index of the current category */
         const calculateIndex = (arrayOfButtons, direction) => {
 
-            const buttonIndex = arrayOfButtons.indexOf(currentIndex);
+            let buttonIndex = arrayOfButtons.indexOf(currentIndex);
             
             if (direction === 'previous') {
                 if (buttonIndex === 0) {
                     buttonIndex = arrayOfButtons.length - 1;
                 } else {
-                    buttonIndex - 1;
+                    buttonIndex = buttonIndex - 1;
                 }
             }
 
@@ -53,7 +53,7 @@ function Image(props) {
                 if (buttonIndex === arrayOfButtons.length - 1) {
                     buttonIndex = 0;
                 } else {
-                    buttonIndex + 1;
+                    buttonIndex = buttonIndex + 1;
                 }
             }
 
