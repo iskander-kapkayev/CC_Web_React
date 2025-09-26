@@ -57,7 +57,7 @@ function Image(props) {
                 }
             }
 
-            return buttonIndex;
+            return arrayOfButtons(buttonIndex);
         };
 
         /* find category of currentIndex */
@@ -138,35 +138,35 @@ function Image(props) {
         <div className='image-container'>
             
             <span>
+                <h2>Random:&nbsp;&nbsp;&nbsp;&nbsp;{miscButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label, 'misc')}>
+                        {index+1}
+                    </button>
+                ))} </h2>  
+
                 <h2>One Piece:&nbsp;&nbsp;&nbsp;&nbsp;{onepieceButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label, 'one piece')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
-                <h2>Dragonball:&nbsp;&nbsp;{dbzButtons.map((label, index) => (
+                <h2>Dragonball:&nbsp;&nbsp;&nbsp;&nbsp;{dbzButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label, 'dbz')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
-                <h2>Naruto:&nbsp;&nbsp;{narutoButtons.map((label, index) => (
+                <h2>Naruto:&nbsp;&nbsp;&nbsp;&nbsp;{narutoButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label, 'naruto')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
-                <h2>Sports:&nbsp;&nbsp;{sportsButtons.map((label, index) => (
+                <h2>Sports:&nbsp;&nbsp;&nbsp;&nbsp;{sportsButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label, 'sports')}>
                         {index+1}
                     </button>
-                ))} </h2>
-
-                <h2>Random:&nbsp;&nbsp;{miscButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'misc')}>
-                        {index+1}
-                    </button>
-                ))} </h2>                
+                ))} </h2>              
 
                 <br/>
             </span>
