@@ -37,20 +37,20 @@ function Image(props) {
     function prevNextImageSelection(direction) {
 
         /* this function used to calculate the prev or next index of the current category */
-        const calculateIndex = (buttonValues, direction) => {
+        const calculateIndex = (arrayOfButtons, direction) => {
 
-            const buttonIndex = buttonValues.indexOf(currentIndex);
+            const buttonIndex = arrayOfButtons.indexOf(currentIndex);
             
             if (direction === 'previous') {
                 if (buttonIndex === 0) {
-                    buttonIndex = buttonValues.length - 1;
+                    buttonIndex = arrayOfButtons.length - 1;
                 } else {
                     buttonIndex - 1;
                 }
             }
 
             if (direction === 'next') {
-                if (buttonIndex === buttonValues.length - 1) {
+                if (buttonIndex === arrayOfButtons.length - 1) {
                     buttonIndex = 0;
                 } else {
                     buttonIndex + 1;
@@ -78,7 +78,7 @@ function Image(props) {
             case 'sports':
                 buttonValues = [17, 18, 19, 20, 21, 22, 23];
                 break;
-            }
+        }
 
         const newIndex = calculateIndex(buttonValues, direction);
         setCurrentIndex(newIndex); // set new index
