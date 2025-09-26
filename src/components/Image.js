@@ -88,10 +88,10 @@ function Image(props) {
 
     /* display the current image! */
     const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    const narutoButtons = [1, 2, 3];
-    const onepieceButtons = [];
-    const dbzButtons = [13, 14, 15, 16];
-    const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const narutoButtons = [1, 2, 3, 28, 29, 30, 31];
+    const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
+    const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
+    const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
     const basketballButtons = [17, 18, 19, 20, 21, 22, 23];
 
 
@@ -99,11 +99,22 @@ function Image(props) {
         <div className='image-container'>
             
             <span>
+                <h2>Naruto: </h2>
+                <br/>
                 {imageButtons.map((label, index) => (
                     <button key={index} onClick={() => handleImageSelection(label)}>
                         {label}
                     </button>
                 ))}
+
+                <h2>One Piece: </h2>
+                <br/>
+                {imageButtons.map((label, index) => (
+                    <button key={index} onClick={() => handleImageSelection(label)}>
+                        {label}
+                    </button>
+                ))}
+
                 <br/>
                 <br/>
             </span>
