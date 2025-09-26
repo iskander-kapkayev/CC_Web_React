@@ -28,7 +28,7 @@ function Image(props) {
 
     function handleImageSelection(newIndex, category) {
         setCurrentIndex(newIndex); // set new index
-        setCurrentIndex(category); // set new category
+        setCurrentCategory(category); // set new category
         localStorage.setItem('currentIndex', newIndex); // store locally
         localStorage.setItem('currentCategory', category); // store locally
         setCurrentsrc(images[newIndex]); // new src based on index
@@ -179,8 +179,8 @@ function Image(props) {
 
              <span>
                 <br/>
-                <button onClick={prevNextImageSelection('previous')}>Prev Image</button>
-                <button onClick={prevNextImageSelection('next')}>Next Image</button>
+                <button onClick={() => prevNextImageSelection('previous')}>Prev Image</button>
+                <button onClick={() => prevNextImageSelection('next')}>Next Image</button>
                 <br/>
             </span>
 
