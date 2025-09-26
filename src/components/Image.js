@@ -10,39 +10,76 @@ import PostNew from './PostNew.js';
 import CaptionForm from './CaptionForm.js';
 
 function Image(props) {
+    /* holds image urls */
     const [images, setImages] = useState({}); // will grab from server every time
-    const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
+
+    /* for processing fetch */
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [currentsrc, setCurrentsrc] = useState(`public/assets/images/guy_kakashi.gif`); // will default to first image
     
+    /* to handle image changes */
+    const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
+    const [currentCategory, setCurrentCategory] = useState('naruto');
+
     // destructure from props
     const { tokenExists } = props;
     const { handleTokenExists } = props;
 
-    function handleImageSelection(newIndex) {
+    function handleImageSelection(newIndex, category) {
         setCurrentIndex(newIndex); // set new index
+        setCurrentIndex(category); // set new category
         localStorage.setItem('currentIndex', newIndex); // store locally
+        localStorage.setItem('currentCategory', category); // store locally
         setCurrentsrc(images[newIndex]); // new src based on index
     }
 
-    function previousImageSelection() {
-        let newIndex = currentIndex - 1;
-        if (newIndex < 1) {
-            newIndex = 20; // reset back to 20
-        }
+    function prevNextImageSelection(direction) {
 
-        setCurrentIndex(newIndex); // set new index
-        localStorage.setItem('currentIndex', newIndex);
-        setCurrentsrc(images[newIndex]); // new src based on index
-    }
+        /* this function used to calculate the prev or next index of the current category */
+        const calculateIndex = (buttonValues, direction) => {
 
-    function nextImageSelection() {
-        let newIndex = currentIndex + 1;
-        if (newIndex > 20) {
-            newIndex = 1; // reset back to 20
-        }
+            const buttonIndex = buttonValues.indexOf(currentIndex);
+            
+            if (direction === 'previous') {
+                if (buttonIndex === 0) {
+                    buttonIndex = buttonValues.length - 1;
+                } else {
+                    buttonIndex - 1;
+                }
+            }
 
+            if (direction === 'next') {
+                if (buttonIndex === buttonValues.length - 1) {
+                    buttonIndex = 0;
+                } else {
+                    buttonIndex + 1;
+                }
+            }
+
+            return buttonIndex;
+        };
+
+        /* find category of currentIndex */
+        switch (currentCategory) {
+            case 'naruto':
+                const buttonValues = [1, 2, 3, 28, 29, 30, 31];
+                break;
+            case 'one piece':
+                const buttonValues = [32, 33, 34, 35, 36, 37, 38];
+                break;
+            case 'dbz':
+                const buttonValues = [13, 14, 15, 16, 24, 25, 26];
+                break;
+            case 'misc':
+                const buttonValues = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
+                break;
+            case 'sports':
+                const buttonValues = [17, 18, 19, 20, 21, 22, 23];
+                break;
+            }
+
+        const newIndex = calculateIndex(buttonValues, direction);
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', newIndex);
         setCurrentsrc(images[newIndex]); // new src based on index
@@ -66,10 +103,13 @@ function Image(props) {
                 setImages(imageURL);
                 
                 const currentIndexExists = Number(localStorage.getItem('currentIndex'));
+                const currentCategoryExists = localStorage.getItem('currentCategory');
                 if (currentIndexExists) {
                     setCurrentIndex(currentIndexExists);
+                    setCurrentCategory(currentCategoryExists);
                 } else {
                     localStorage.setItem('currentIndex', 1);
+                    localStorage.setItem('currentCategory', 'naruto');
                 }
 
                 setCurrentsrc(imageURL[currentIndexExists]);
@@ -87,46 +127,42 @@ function Image(props) {
     }, []); //no dependency, but we can change to for server issues
 
     /* display the current image! */
-    const imageButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     const narutoButtons = [1, 2, 3, 28, 29, 30, 31];
     const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
     const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
     const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
     const sportsButtons = [17, 18, 19, 20, 21, 22, 23];
-
-
+    
     return (
         <div className='image-container'>
             
             <span>
-                <h2>Image Directory</h2>
-                <br/>
                 <h2>One Piece:&nbsp;&nbsp;&nbsp;&nbsp;{onepieceButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
+                    <button key={index} onClick={() => handleImageSelection(label, 'one piece')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
                 <h2>Dragonball:&nbsp;&nbsp;{dbzButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
+                    <button key={index} onClick={() => handleImageSelection(label, 'dbz')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
                 <h2>Naruto:&nbsp;&nbsp;{narutoButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
+                    <button key={index} onClick={() => handleImageSelection(label, 'naruto')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
                 <h2>Sports:&nbsp;&nbsp;{sportsButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
+                    <button key={index} onClick={() => handleImageSelection(label, 'sports')}>
                         {index+1}
                     </button>
                 ))} </h2>
 
                 <h2>Random:&nbsp;&nbsp;{miscButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label)}>
+                    <button key={index} onClick={() => handleImageSelection(label, 'misc')}>
                         {index+1}
                     </button>
                 ))} </h2>                
@@ -140,12 +176,12 @@ function Image(props) {
                 <img id="myImage" alt={currentsrc} src={currentsrc}/>
             )}
 
-            {/* <span>
+             <span>
                 <br/>
-                <button onClick={previousImageSelection}>Prev Image</button>
-                <button onClick={nextImageSelection}>Next Image</button>
+                <button onClick={prevNextImageSelection('previous')}>Prev Image</button>
+                <button onClick={prevNextImageSelection('next')}>Next Image</button>
                 <br/>
-            </span> */}
+            </span>
 
             <PostNew currentIndex={currentIndex} handleTokenExists={handleTokenExists}/>
             <CaptionForm tokenExists={tokenExists} handleTokenExists={handleTokenExists} currentIndex={currentIndex}/>
