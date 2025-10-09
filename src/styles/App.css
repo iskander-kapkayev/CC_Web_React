@@ -510,3 +510,100 @@ below starts styling for forms
   text-decoration: underline;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  /* General container width adjustments */
+  .aboutmecontainer,
+  .leaderboard,
+  .image-container,
+  .caption-form,
+  footer p {
+    width: 90%;
+  }
+
+  .form-container,
+  .form-container form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .contactcontainer {
+    width: 90%;
+  }
+
+  /* Navigation adjustments */
+  .header-container nav ul,
+  .header-container #smallnav ul,
+  .userpages nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .header-container nav ul li,
+  .header-container #smallnav ul li,
+  .userpages nav ul li {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header-container #smallnav ul {
+    width: 90%;
+  }
+
+  /* Table width and text adjustments */
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th, td {
+    word-break: break-word;
+  }
+
+  /* Image responsiveness */
+  #myImage {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  /* Post layout scaling */
+  .post {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .post #postCaption {
+    font-size: 14px;
+  }
+
+  .post #postUser {
+    font-size: 12px;
+  }
+
+  .post #postUpvotes {
+    width: 80px;
+  }
+
+  .votenum,
+  .heart {
+    font-size: 12px;
+  }
+
+  .deletion {
+    font-size: 10px;
+  }
+
+  /* Caption form input/button layout */
+  .caption-form form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .caption-form form input,
+  .caption-form form button {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
