@@ -536,7 +536,7 @@ below starts styling for forms
   .header-container #smallnav ul,
   .userpages nav ul {
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     padding: 10px;
   }
 
@@ -564,7 +564,7 @@ below starts styling for forms
 
   /* Image responsiveness */
   #myImage {
-    max-width: 100%;
+    max-width: 90%;
     max-height: 300px;
   }
 
