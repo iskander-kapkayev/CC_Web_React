@@ -30,6 +30,14 @@ function Image(props) {
     const { tokenExists } = props;
     const { handleTokenExists } = props;
 
+    /* image button cycles for the different categories */
+        /* display the current image! */
+    const narutoButtons = [1, 2, 3, 28, 29, 30, 31];
+    const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
+    const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
+    const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
+    const sportsButtons = [17, 18, 19, 20, 21, 22, 23];
+
     function handleImageSelection(newIndex, category) {
         setCurrentIndex(newIndex); // set new index
         setCurrentCategory(category); // set new category
@@ -118,6 +126,25 @@ function Image(props) {
                     setCurrentIndex(currentIndexExists);
                     setCurrentCategory(currentCategoryExists);
                     setMenuCategory(currentCategoryExists);
+                    
+                    switch (currentCategory) {
+                        case 'naruto':
+                            setMenuCategoryButtons(narutoButtons);
+                            break;
+                        case 'one piece':
+                            setMenuCategoryButtons(onepieceButtons);
+                            break;
+                        case 'dbz':
+                            setMenuCategoryButtons(dbzButtons);
+                            break;
+                        case 'misc':
+                            setMenuCategoryButtons(miscButtons);
+                            break;
+                        case 'sports':
+                            setMenuCategoryButtons(sportsButtons);
+                            break;
+                    }
+
                 } else {
                     localStorage.setItem('currentIndex', 1);
                     localStorage.setItem('currentCategory', 'naruto');
@@ -137,13 +164,6 @@ function Image(props) {
 
     }, []); //no dependency, but we can change to for server issues
 
-    /* display the current image! */
-    const narutoButtons = [1, 2, 3, 28, 29, 30, 31];
-    const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
-    const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
-    const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
-    const sportsButtons = [17, 18, 19, 20, 21, 22, 23];
-    
     function menuMaker(category, categoryButtons) {
 
         let categoryName = '';
