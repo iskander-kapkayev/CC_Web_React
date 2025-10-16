@@ -40,7 +40,6 @@ function Image(props) {
     function handleImageSelection(newIndex, category) {
         setCurrentIndex(newIndex); // set new index
         setCurrentCategory(category); // set new category
-        handleMenuCategory(category, menuCategoryButtons);
         localStorage.setItem('currentIndex', newIndex); // store locally
         localStorage.setItem('currentCategory', category); // store locally
         setCurrentsrc(images[newIndex]); // new src based on index
@@ -109,7 +108,7 @@ function Image(props) {
                     setCurrentCategory(currentCategoryExists);
                     setMenuCategory(currentCategoryExists);
                     
-                    switch (currentCategory) {
+                    switch (currentCategoryExists) {
                         case 'naruto':
                             setMenuCategoryButtons(narutoButtons);
                             break;
