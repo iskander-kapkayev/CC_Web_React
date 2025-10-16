@@ -536,7 +536,7 @@ below starts styling for forms
   .header-container #smallnav ul,
   .userpages nav ul {
     flex-direction: column;
-    width: 90%;
+    width: 40%;
     padding: 10px;
   }
 
