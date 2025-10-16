@@ -145,10 +145,29 @@ function Image(props) {
     
     function menuMaker(category, categoryButtons) {
 
+        let categoryName = '';
+        switch (category) {
+            case 'misc':
+                categoryName = 'Random';
+                break;
+            case 'one piece':
+                categoryName = 'One Piece';
+                break;
+            case 'dbz':
+                categoryName = 'Dragonball';
+                break;
+            case 'naruto':
+                categoryName = 'Naruto';
+                break;
+            case 'sports':
+                categoryName = 'Sports';
+                break;
+        }
+
         return (
             <div>
                 <h2>
-                    {category}:&nbsp;&nbsp;&nbsp;&nbsp;
+                    {categoryName}:&nbsp;&nbsp;&nbsp;&nbsp;
                     {categoryButtons.map((label, index) => (
                         <button key={index} onClick={() => handleImageSelection(label, category)}>
                             {index + 1}
@@ -166,7 +185,7 @@ function Image(props) {
             
             <span>
                 {!menuCategory ? (
-                    <h2>Choose a category!&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h2>Choose an image category:&nbsp;&nbsp;&nbsp;&nbsp;
                         <button onClick={() => handleMenuCategory('misc', miscButtons)}>Random</button>
                         <button onClick={() => handleMenuCategory('one piece', onepieceButtons)}>One Piece</button>
                         <button onClick={() => handleMenuCategory('dbz', dbzButtons)}>Dragonball</button>
