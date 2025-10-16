@@ -78,26 +78,8 @@ function Image(props) {
         };
 
         /* find category of currentIndex */
-        let buttonValues = [];
-        switch (currentCategory) {
-            case 'naruto':
-                buttonValues = [1, 2, 3, 28, 29, 30, 31];
-                break;
-            case 'one piece':
-                buttonValues = [32, 33, 34, 35, 36, 37, 38];
-                break;
-            case 'dbz':
-                buttonValues = [13, 14, 15, 16, 24, 25, 26];
-                break;
-            case 'misc':
-                buttonValues = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
-                break;
-            case 'sports':
-                buttonValues = [17, 18, 19, 20, 21, 22, 23];
-                break;
-        }
-
-        const newIndex = calculateIndex(buttonValues, direction);
+       
+        const newIndex = calculateIndex(menuCategoryButtons, direction);
         setCurrentIndex(newIndex); // set new index
         localStorage.setItem('currentIndex', newIndex);
         setCurrentsrc(images[newIndex]); // new src based on index
