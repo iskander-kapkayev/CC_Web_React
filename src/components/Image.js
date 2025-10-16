@@ -117,6 +117,7 @@ function Image(props) {
                 if (currentIndexExists) {
                     setCurrentIndex(currentIndexExists);
                     setCurrentCategory(currentCategoryExists);
+                    setMenuCategory(currentCategoryExists);
                 } else {
                     localStorage.setItem('currentIndex', 1);
                     localStorage.setItem('currentCategory', 'naruto');
