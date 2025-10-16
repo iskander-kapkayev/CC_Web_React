@@ -20,7 +20,7 @@ function AboutMe() {
                     **All images are borrowed!**
                 </p>
             </div>
-            
+            <br/>
             <div className="aboutmecontainer">
 
                 <p>
