@@ -21,6 +21,10 @@ function Image(props) {
     /* to handle image changes */
     const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
     const [currentCategory, setCurrentCategory] = useState('naruto'); // set original category to naruto
+    
+    /* to handle menu categories */
+    const [menuCategory, setMenuCategory] = useState(''); // for menu handling
+    const [menuCategoryButtons, setMenuCategoryButtons] = useState([]); // for menu handling
 
     // destructure from props
     const { tokenExists } = props;
@@ -32,6 +36,11 @@ function Image(props) {
         localStorage.setItem('currentIndex', newIndex); // store locally
         localStorage.setItem('currentCategory', category); // store locally
         setCurrentsrc(images[newIndex]); // new src based on index
+    }
+
+    function handleMenuCategory(category, categoryButtons) {
+        setMenuCategory(category);
+        setMenuCategoryButtons(categoryButtons);
     }
 
     function prevNextImageSelection(direction) {
@@ -134,40 +143,39 @@ function Image(props) {
     const miscButtons = [4, 5, 6, 7, 8, 9, 10, 11, 12, 27];
     const sportsButtons = [17, 18, 19, 20, 21, 22, 23];
     
+    function menuMaker(category, categoryButtons) {
+
+        return (
+            <div>
+                <h2>
+                    {category}:&nbsp;&nbsp;&nbsp;&nbsp;
+                    {categoryButtons.map((label, index) => (
+                        <button key={index} onClick={() => handleImageSelection(label, category)}>
+                            {index + 1}
+                        </button>
+                    ))}
+                </h2>
+                <button onClick={() => handleMenuCategory('', [])}>Back to Categories</button>
+            </div>
+        );
+
+    }
+
     return (
         <div className='image-container'>
             
             <span>
-                <h2>Random:&nbsp;&nbsp;&nbsp;&nbsp;{miscButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'misc')}>
-                        {index+1}
-                    </button>
-                ))} </h2>  
-
-                <h2>One Piece:&nbsp;&nbsp;&nbsp;&nbsp;{onepieceButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'one piece')}>
-                        {index+1}
-                    </button>
-                ))} </h2>
-
-                <h2>Dragonball:&nbsp;&nbsp;&nbsp;&nbsp;{dbzButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'dbz')}>
-                        {index+1}
-                    </button>
-                ))} </h2>
-
-                <h2>Naruto:&nbsp;&nbsp;&nbsp;&nbsp;{narutoButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'naruto')}>
-                        {index+1}
-                    </button>
-                ))} </h2>
-
-                <h2>Sports:&nbsp;&nbsp;&nbsp;&nbsp;{sportsButtons.map((label, index) => (
-                    <button key={index} onClick={() => handleImageSelection(label, 'sports')}>
-                        {index+1}
-                    </button>
-                ))} </h2>              
-
+                {!menuCategory ? (
+                    <h2>Choose a category!&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onClick={() => handleMenuCategory('misc', miscButtons)}>Random</button>
+                        <button onClick={() => handleMenuCategory('one piece', onepieceButtons)}>One Piece</button>
+                        <button onClick={() => handleMenuCategory('dbz', dbzButtons)}>Dragonball</button>
+                        <button onClick={() => handleMenuCategory('naruto', narutoButtons)}>Naruto</button>
+                        <button onClick={() => handleMenuCategory('sports', sportsButtons)}>Sports</button>
+                    </h2>
+                    ) : (
+                    menuMaker(menuCategory, menuCategoryButtons)     
+                )}
                 <br/>
             </span>
 
