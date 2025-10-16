@@ -31,7 +31,6 @@ function Image(props) {
     const { handleTokenExists } = props;
 
     /* image button cycles for the different categories */
-        /* display the current image! */
     const narutoButtons = [1, 2, 3, 28, 29, 30, 31];
     const onepieceButtons = [32, 33, 34, 35, 36, 37, 38];
     const dbzButtons = [13, 14, 15, 16, 24, 25, 26];
@@ -41,6 +40,7 @@ function Image(props) {
     function handleImageSelection(newIndex, category) {
         setCurrentIndex(newIndex); // set new index
         setCurrentCategory(category); // set new category
+        handleMenuCategory(category, menuCategoryButtons);
         localStorage.setItem('currentIndex', newIndex); // store locally
         localStorage.setItem('currentCategory', category); // store locally
         setCurrentsrc(images[newIndex]); // new src based on index
