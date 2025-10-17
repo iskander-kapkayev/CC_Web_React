@@ -27,18 +27,25 @@ h2 {
   font-size: 16px;
 }
 
-h2 span {
+.centered-menu span {
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 8px;
+  justify-content: center;
+  align-items: center;
   transition: background-color 0.2s;
 }
 
-h2 span:hover {
+.centered-menu span:hover {
+  transition: background-color 0.2s;
   background-color: #32a889;
 }
 
-h2 span.active {
+.centered-menu-no-hl {
+  background-color: white;
+}
+
+.centered-menu span.active {
   background-color: #33a741;
   padding: 5px 10px;
   border-radius: 8px;

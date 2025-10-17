@@ -164,7 +164,7 @@ function Image(props) {
     return (
         <div className='image-container'>
             
-            <h2>
+            <h2 className='centered-menu'>
                 <span 
                     onClick={() => handleMenuCategory('misc', miscButtons)}
                     className={menuCategory === 'misc' ? 'active' : ''}
@@ -193,14 +193,14 @@ function Image(props) {
                     Naruto
                 </span>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <span 
+                <span
                     onClick={() => handleMenuCategory('sports', sportsButtons)}
                     className={menuCategory === 'sports' ? 'active' : ''}
                 >
                     Sports
                 </span>&nbsp;&nbsp;&nbsp;&nbsp;
                 
-                <span>
+                <span className='centered-menu-no-hl'>
                     {menuMaker(menuCategory, menuCategoryButtons)}    
                 </span>
 
