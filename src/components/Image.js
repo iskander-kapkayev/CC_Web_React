@@ -200,9 +200,7 @@ function Image(props) {
                     Sports
                 </span>&nbsp;&nbsp;&nbsp;&nbsp;
                 
-                <span className='centered-menu-no-hl'>
-                    {menuMaker(menuCategory, menuCategoryButtons)}    
-                </span>
+                {menuMaker(menuCategory, menuCategoryButtons)}    
 
                 <br/>
             </h2>
