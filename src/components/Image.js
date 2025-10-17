@@ -203,7 +203,7 @@ function Image(props) {
                 <br/>
             </h2>
 
-            <h2>
+            <h2 className='centered-menu'>
                 {menuMaker(menuCategory, menuCategoryButtons)}
                 <br/>
             </h2>
