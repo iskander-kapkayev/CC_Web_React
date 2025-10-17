@@ -27,6 +27,24 @@ h2 {
   font-size: 16px;
 }
 
+h2 span {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+h2 span:hover {
+  background-color: #32a889;
+}
+
+h2 span.active {
+  background-color: #33a741;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: white;
+}
+
 .aboutmecontainer {
   background: #FFFFFF;
   padding: 10px;

@@ -147,36 +147,15 @@ function Image(props) {
 
     function menuMaker(category, categoryButtons) {
 
-        let categoryName = '';
-        switch (category) {
-            case 'misc':
-                categoryName = 'Random';
-                break;
-            case 'one piece':
-                categoryName = 'One Piece';
-                break;
-            case 'dbz':
-                categoryName = 'Dragonball';
-                break;
-            case 'naruto':
-                categoryName = 'Naruto';
-                break;
-            case 'sports':
-                categoryName = 'Sports';
-                break;
-        }
-
         return (
             <div>
                 <h2>
-                    {categoryName}:&nbsp;&nbsp;&nbsp;&nbsp;
                     {categoryButtons.map((label, index) => (
                         <button key={index} onClick={() => handleImageSelection(label, category)}>
                             {index + 1}
                         </button>
                     ))}
                 </h2>
-                <button onClick={() => handleMenuCategory('', [])}>Back to Categories</button>
             </div>
         );
 
@@ -185,20 +164,48 @@ function Image(props) {
     return (
         <div className='image-container'>
             
-            <span>
-                {!menuCategory ? (
-                    <h2>Choose an image category:&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onClick={() => handleMenuCategory('misc', miscButtons)}>Random</button>
-                        <button onClick={() => handleMenuCategory('one piece', onepieceButtons)}>One Piece</button>
-                        <button onClick={() => handleMenuCategory('dbz', dbzButtons)}>Dragonball</button>
-                        <button onClick={() => handleMenuCategory('naruto', narutoButtons)}>Naruto</button>
-                        <button onClick={() => handleMenuCategory('sports', sportsButtons)}>Sports</button>
-                    </h2>
-                    ) : (
-                    menuMaker(menuCategory, menuCategoryButtons)     
-                )}
+            <h2>
+                <span 
+                    onClick={() => handleMenuCategory('misc', miscButtons)}
+                    className={menuCategory === 'misc' ? 'active' : ''}
+                >
+                    Random
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span 
+                    onClick={() => handleMenuCategory('one piece', onepieceButtons)}
+                    className={menuCategory === 'one piece' ? 'active' : ''}
+                >
+                    One Piece
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span 
+                    onClick={() => handleMenuCategory('dbz', dbzButtons)}
+                    className={menuCategory === 'dbz' ? 'active' : ''}
+                >
+                    Dragonball
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span 
+                    onClick={() => handleMenuCategory('naruto', narutoButtons)}
+                    className={menuCategory === 'naruto' ? 'active' : ''}
+                >
+                    Naruto
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <span 
+                    onClick={() => handleMenuCategory('sports', sportsButtons)}
+                    className={menuCategory === 'sports' ? 'active' : ''}
+                >
+                    Sports
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <span>
+                    {menuMaker(menuCategory, menuCategoryButtons)}    
+                </span>
+
                 <br/>
-            </span>
+            </h2>
 
             {loading ? (
                 <h2>Images are loading from the server...</h2>
