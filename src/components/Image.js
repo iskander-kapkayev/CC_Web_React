@@ -152,7 +152,7 @@ function Image(props) {
                 <h2>
                     {categoryButtons.map((label, index) => (
                         <button key={index} onClick={() => handleImageSelection(label, category)}>
-                            {index + 1}
+                            {index + 1}&nbsp;&nbsp;&nbsp;&nbsp;
                         </button>
                     ))}
                 </h2>
