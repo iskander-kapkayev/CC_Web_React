@@ -149,15 +149,17 @@ function Image(props) {
 
         return (
             <div>
-                <span>
-                    {categoryButtons.map((label, index) => (
-                        
-                            <button style={{marginRight: 10px}} key={index} onClick={() => handleImageSelection(label, category)}>
-                                {index + 1}
-                            </button>
-                    ))}
-                </span>
-            </div>
+  <div style={{ display: 'flex', gap: '10px' }}>
+    {categoryButtons.map((label, index) => (
+      <button
+        key={index}
+        onClick={() => handleImageSelection(label, category)}
+      >
+        {index + 1}
+      </button>
+    ))}
+  </div>
+</div>            
         );
 
     }
