@@ -249,12 +249,12 @@ Below styles will reflect the navigation menu
   background-color: #32a889;
 }
 
-.number-button-span {
-    padding: 0;
-}
-
 .number-button-span:hover {
     padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 #myImage {
