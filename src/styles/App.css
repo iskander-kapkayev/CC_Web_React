@@ -249,6 +249,14 @@ Below styles will reflect the navigation menu
   background-color: #32a889;
 }
 
+.number-button-span {
+    padding: 0;
+}
+
+.number-button-span:hover {
+    padding: 0;
+}
+
 #myImage {
   margin-left: auto;
   margin-right: auto;
