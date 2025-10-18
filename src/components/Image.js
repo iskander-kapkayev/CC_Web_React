@@ -154,7 +154,7 @@ function Image(props) {
                         <span style={{ padding: 0 }}>
                             <button key={index} onClick={() => handleImageSelection(label, category)}>
                                 {index + 1}
-                            </button>
+                            </button> &nbsp;&nbsp;
                         </span>
                     ))}
                 </h2>
