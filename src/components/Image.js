@@ -219,7 +219,7 @@ function Image(props) {
              <span>
                 <br/>
                 <button onClick={() => prevNextImageSelection('previous')}>Prev Image</button>
-                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <button onClick={() => prevNextImageSelection('next')}>Next Image</button>
                 <br/>
             </span>
