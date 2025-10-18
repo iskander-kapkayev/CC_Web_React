@@ -149,7 +149,7 @@ function Image(props) {
 
         return (
             <div>
-                <h2 className="number-button-span">
+                <h2>
                     {categoryButtons.map((label, index) => (
                         <span className="number-button-span">
                             <button key={index} onClick={() => handleImageSelection(label, category)}>
