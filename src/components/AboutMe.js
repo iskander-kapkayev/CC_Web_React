@@ -10,8 +10,8 @@ function AboutMe() {
                 <h2>About Me:</h2>
 
                 <p id="aboutmetext">
-                    This is a free to use caption contest!<br/>
-                    Feel free to share the link with others.<br/><br/>
+                    This is a free to play caption contest!<br/>
+                    Feel free to share the link with friends.<br/><br/>
                     In order to participate:<br/>
                         1.    Register and make an account.<br/>
                         2.    Leave a caption on any image.<br/>
@@ -24,7 +24,7 @@ function AboutMe() {
             <div className="aboutmecontainer">
 
                 <p>
-                    In order to contact me, you can email me at:<br/>
+                    If you need to contact me, you can email me at:<br/>
                     iskander.kapkayev@gmail.com
                 </p>
             

@@ -514,7 +514,7 @@ below starts styling for forms
 }
 
 .caption-form form button {
-  max-width: 25px;
+  max-width: 60px;
   background-color: #33a741;
   color: white;
   border: none;

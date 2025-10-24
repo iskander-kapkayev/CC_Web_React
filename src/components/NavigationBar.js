@@ -23,8 +23,8 @@ function NavigationBar(props) {
     return (
         <div className="header-container">
             {usernameExists ?
-                <h1>Iskander's Caption Contest! - Welcome back <em>{usernameExists}</em></h1> :
-                <h1>Iskander's Caption Contest!</h1>
+                <h1>Caption Chaos! - Welcome back <em>{usernameExists}</em></h1> :
+                <h1>Caption Chaos!</h1>
             }
             <nav>
                 <ul>
