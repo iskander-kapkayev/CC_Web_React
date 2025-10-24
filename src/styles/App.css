@@ -491,7 +491,6 @@ below starts styling for forms
 }
 
 .caption-form form input {
-  flex-grow: 1;
   padding: 6px 10px;
   font-size: 16px;
   border-radius: 9999px; /* pill shape */
@@ -513,23 +512,20 @@ below starts styling for forms
 }
 
 .caption-form form button {
-  background: #33a741;
-  border: none;
+  background-color: #33a741;
   color: white;
-  padding: 0 20px;
-  font-size: 16px;
-  border-radius: 9999px; /* pill shape */
-  box-shadow: 0 4px 12px rgba(16,163,127,0.4);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .caption-form form button:hover {
-  background: #32a889;
-  box-shadow: 0 6px 16px rgba(14,140,104,0.6);
+  background-color: #32a889;
+}
+
+#caption-form-link:hover {
+  cursor: pointer;
 }
 
 /* link hovers */

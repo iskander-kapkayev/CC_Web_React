@@ -67,7 +67,7 @@ function CaptionForm(props) {
                 throw new Error('Token has expired or does not exist');
             }
 
-            const addedCaption = await response.json(); // this isn't really necessary anyway
+            const addedCaption = await response.json(); // this isn't really necessary atm
             setText(''); // empty text string
             setShowCaptionForm(false); // remove caption form
             setSuccess(true);
