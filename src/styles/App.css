@@ -488,9 +488,11 @@ below starts styling for forms
 .caption-form form {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 
 .caption-form form input {
+  width: 65%;
   padding: 6px 10px;
   font-size: 16px;
   border-radius: 9999px; /* pill shape */
