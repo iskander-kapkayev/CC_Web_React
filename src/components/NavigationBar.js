@@ -33,7 +33,7 @@ function NavigationBar(props) {
                         <li onClick={() => props.onClick('login')}>Login</li>
                     }
                     <li onClick={() => props.onClick('home')}>Captions</li>
-                    <li onClick={() => props.onClick('about')}>About Me</li>
+                    <li onClick={() => props.onClick('about')}>Info Page</li>
                     <li onClick={() => props.onClick('leader')}>Leaderboard</li>
                 </ul>
             </nav>

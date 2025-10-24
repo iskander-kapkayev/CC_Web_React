@@ -7,7 +7,7 @@ function AboutMe() {
         <div>
             <div className="aboutmecontainer">
 
-                <h2>About Me:</h2>
+                <h2>Welcome to Caption Chaos!</h2>
 
                 <p id="aboutmetext">
                     This is a free to play caption contest!<br/>
