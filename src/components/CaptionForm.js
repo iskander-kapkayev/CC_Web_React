@@ -83,13 +83,13 @@ function CaptionForm(props) {
         <div className="caption-form">
             {tokenExists ?
                 !showCaptionForm ?
-                    <h2 id="caption-form-link" onClick={() => handleClick()}>Click on me to leave a caption</h2>
+                    <h2 id="caption-form-link" onClick={() => handleClick()}>Press here to leave a caption</h2>
                     :
                     <div id="caption-form-box-border">
                         <h2>Type in your caption below:</h2>
                         <form onSubmit={submitNewCaption}>
                             <input type="text" id="text" value={text} placeholder="make me laugh..." onChange={handleText} required/>
-                            <button type="submit" value="SUBMIT">POST</button>
+                            <button type="submit" value="SUBMIT">Post</button>
                         </form>
                     </div>
                 :

@@ -19,8 +19,8 @@ function Image(props) {
     const [currentsrc, setCurrentsrc] = useState(`public/assets/images/guy_kakashi.gif`); // will default to first image
     
     /* to handle image changes */
-    const [currentIndex, setCurrentIndex] = useState(1); // set original state to 1
-    const [currentCategory, setCurrentCategory] = useState('naruto'); // set original category to naruto
+    const [currentIndex, setCurrentIndex] = useState(null); // set original state to 1
+    const [currentCategory, setCurrentCategory] = useState(''); // set original category to naruto
     
     /* to handle menu categories */
     const [menuCategory, setMenuCategory] = useState(''); // for menu handling
@@ -129,6 +129,8 @@ function Image(props) {
                 } else {
                     localStorage.setItem('currentIndex', 1);
                     localStorage.setItem('currentCategory', 'naruto');
+                    setCurrentIndex(1);
+                    setCurrentCategory('naruto');
                 }
 
                 setCurrentsrc(imageURL[currentIndexExists]);
