@@ -89,6 +89,7 @@ function CaptionForm(props) {
                         <h2>Type in your caption below:</h2>
                         <form onSubmit={submitNewCaption}>
                             <input type="text" id="text" value={text} placeholder="make me laugh..." onChange={handleText} required/>
+                            <br/>
                             <button type="submit" value="SUBMIT">Post</button>
                         </form>
                     </div>
