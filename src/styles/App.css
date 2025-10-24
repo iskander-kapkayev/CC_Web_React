@@ -488,7 +488,7 @@ below starts styling for forms
 .caption-form form {
   display: flex;
   gap: 12px;
-  align-content: center;
+  justify-content: center;
   align-items: center;
 }
 
@@ -502,6 +502,7 @@ below starts styling for forms
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   outline: none;
+  margin: 0 auto;
 }
 
 .caption-form form input::placeholder {
