@@ -492,7 +492,7 @@ below starts styling for forms
 }
 
 .caption-form form input {
-  width: 65%;
+  width: 60%;
   padding: 6px 10px;
   font-size: 16px;
   border-radius: 9999px; /* pill shape */
@@ -514,6 +514,7 @@ below starts styling for forms
 }
 
 .caption-form form button {
+  max-width: 25px;
   background-color: #33a741;
   color: white;
   border: none;
