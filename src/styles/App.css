@@ -488,6 +488,7 @@ below starts styling for forms
 .caption-form form {
   display: flex;
   gap: 12px;
+  align-content: center;
   align-items: center;
 }
 
